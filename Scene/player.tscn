@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://1ct4yyftx7wk"]
+
+[ext_resource type="Script" uid="uid://cn1hixuyrd2q5" path="res://Scripts/player.gd" id="1_kelma"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j47wa"]
+size = Vector2(30, 30)
+
+[node name="player" type="CharacterBody2D"]
+collision_mask = 15
+script = ExtResource("1_kelma")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_j47wa")
