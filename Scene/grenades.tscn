@@ -1,0 +1,163 @@
+[gd_scene load_steps=19 format=3 uid="uid://cd1jhrtyvx4db"]
+
+[ext_resource type="Script" uid="uid://df7xlnby53w8a" path="res://Scripts/grenades.gd" id="1_m1nw5"]
+[ext_resource type="Texture2D" uid="uid://sq2lh7kll6mk" path="res://gra/game Player anim/Player_2/player_2_grenade.png" id="2_kcnk1"]
+[ext_resource type="Texture2D" uid="uid://c3wnpi3ono8qo" path="res://gra/game Player anim/Player_1/paetcals_shap.png" id="3_2l5ry"]
+[ext_resource type="Texture2D" uid="uid://cjwtr4gswea2f" path="res://gra/Explosions pack/explosion-1-a/spritesheet.png" id="4_2l5ry"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_v80ko"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 2.03
+angle_min = -720.0
+angle_max = 720.0
+angular_velocity_min = -1.60933e-05
+angular_velocity_max = -1.60933e-05
+gravity = Vector3(13, -13, 0)
+scale_min = 0.1
+scale_max = 0.2
+color = Color(0.947342, 0.302612, 0, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r1ei2"]
+radius = 16.0
+
+[sub_resource type="Animation" id="Animation_2tuq2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player2Grenade:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_fcc07"]
+resource_name = "colur_change"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player2Grenade:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.03333, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g6co5"]
+_data = {
+&"RESET": SubResource("Animation_2tuq2"),
+&"colur_change": SubResource("Animation_fcc07")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tavro"]
+atlas = ExtResource("4_2l5ry")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7yw05"]
+atlas = ExtResource("4_2l5ry")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ky2b"]
+atlas = ExtResource("4_2l5ry")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6nkk5"]
+atlas = ExtResource("4_2l5ry")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4c4n"]
+atlas = ExtResource("4_2l5ry")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0umep"]
+atlas = ExtResource("4_2l5ry")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ayxfe"]
+atlas = ExtResource("4_2l5ry")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2gvd4"]
+atlas = ExtResource("4_2l5ry")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v80ko"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tavro")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7yw05")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ky2b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6nkk5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t4c4n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0umep")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ayxfe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2gvd4")
+}],
+"loop": false,
+"name": &"visble_effect",
+"speed": 10.0
+}]
+
+[node name="grenades" type="Area2D"]
+rotation = 0.785398
+scale = Vector2(1.2, 1.2)
+collision_layer = 4
+script = ExtResource("1_m1nw5")
+
+[node name="Player2Grenade" type="Sprite2D" parent="."]
+texture = ExtResource("2_kcnk1")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(0, -11)
+amount = 17
+texture = ExtResource("3_2l5ry")
+process_material = SubResource("ParticleProcessMaterial_v80ko")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_r1ei2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_g6co5")
+}
+autoplay = "colur_change"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = -0.785398
+scale = Vector2(2.3, 2.3)
+sprite_frames = SubResource("SpriteFrames_v80ko")
+animation = &"visble_effect"
+frame = 7
+frame_progress = 1.0
+
+[node name="visble_timer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="visble_timer" to="." method="_on_visble_timer_timeout"]

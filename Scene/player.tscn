@@ -1,9 +1,113 @@
-[gd_scene load_steps=3 format=3 uid="uid://1ct4yyftx7wk"]
+[gd_scene load_steps=21 format=3 uid="uid://1ct4yyftx7wk"]
 
 [ext_resource type="Script" uid="uid://cn1hixuyrd2q5" path="res://Scripts/player.gd" id="1_kelma"]
+[ext_resource type="Texture2D" uid="uid://c3wnpi3ono8qo" path="res://gra/Player_1/paetcals_shap.png" id="2_y8w33"]
+[ext_resource type="Texture2D" uid="uid://bjn7vteyuk3l8" path="res://gra/Explosions pack/explosion-1-f/Sprites.png" id="3_xa75v"]
+[ext_resource type="Texture2D" uid="uid://cjwtr4gswea2f" path="res://gra/Explosions pack/explosion-1-a/spritesheet.png" id="4_58ae2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j47wa"]
 size = Vector2(30, 30)
+
+[sub_resource type="Curve" id="Curve_xa75v"]
+_limits = [-360.0, 360.0, 0.0, 1.0]
+_data = [Vector2(0.0049261, 360), 0.0, 0.0, 0, 0, Vector2(1, -360), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_y8w33"]
+curve = SubResource("Curve_xa75v")
+
+[sub_resource type="Curve" id="Curve_58ae2"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.128079, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_xa75v"]
+curve = SubResource("Curve_58ae2")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ivevv"]
+lifetime_randomness = 0.56
+particle_flag_disable_z = true
+angle_min = -720.0
+angle_max = 720.0
+angle_curve = SubResource("CurveTexture_y8w33")
+inherit_velocity_ratio = 1.0
+spread = 180.0
+initial_velocity_max = 173.48
+gravity = Vector3(0, 0, 0)
+scale_min = 0.01
+scale_max = 0.17
+color = Color(1, 0.666874, 0.302317, 1)
+emission_curve = SubResource("CurveTexture_xa75v")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_58ae2"]
+atlas = ExtResource("3_xa75v")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ivevv"]
+atlas = ExtResource("3_xa75v")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r6jsd"]
+atlas = ExtResource("3_xa75v")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p6qlh"]
+atlas = ExtResource("3_xa75v")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2sw5t"]
+atlas = ExtResource("3_xa75v")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ij4jb"]
+atlas = ExtResource("3_xa75v")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c68nv"]
+atlas = ExtResource("3_xa75v")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c31lq"]
+atlas = ExtResource("3_xa75v")
+region = Rect2(336, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2dof7"]
+atlas = ExtResource("4_58ae2")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y8w33"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_58ae2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ivevv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r6jsd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p6qlh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2sw5t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ij4jb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c68nv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c31lq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2dof7")
+}],
+"loop": false,
+"name": &"death_effect",
+"speed": 9.0
+}]
 
 [node name="player" type="CharacterBody2D"]
 collision_mask = 15
@@ -13,3 +117,49 @@ script = ExtResource("1_kelma")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_j47wa")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(1.78814e-07, 4.76837e-07)
+scale = Vector2(1.5, 1.5)
+
+[node name="timers" type="Node" parent="."]
+
+[node name="Attack_timer" type="Timer" parent="timers"]
+wait_time = 0.5
+one_shot = true
+
+[node name="Attack_2_timer" type="Timer" parent="timers"]
+wait_time = 1.5
+one_shot = true
+
+[node name="Hit_timer" type="Timer" parent="timers"]
+wait_time = 0.64
+one_shot = true
+
+[node name="die_effect_timer" type="Timer" parent="timers"]
+wait_time = 0.1
+one_shot = true
+
+[node name="spwon_effect" type="GPUParticles2D" parent="."]
+position = Vector2(0, 0.833336)
+emitting = false
+amount = 250
+texture = ExtResource("2_y8w33")
+lifetime = 1.56
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_ivevv")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_y8w33")
+animation = &"death_effect"
+frame = 8
+frame_progress = 1.0
+
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="timeout" from="timers/Attack_timer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="timers/Attack_2_timer" to="." method="_on_attack_2_timer_timeout"]
+[connection signal="timeout" from="timers/Hit_timer" to="." method="_on_hit_timer_timeout"]
+[connection signal="timeout" from="timers/die_effect_timer" to="." method="_on_die_effect_timer_timeout"]

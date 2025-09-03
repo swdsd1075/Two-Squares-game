@@ -1,0 +1,199 @@
+[gd_scene load_steps=25 format=3 uid="uid://kqif7cvtuol5"]
+
+[ext_resource type="Script" uid="uid://b0u8r3d2r5640" path="res://Scripts/mystry_box.gd" id="1_767vw"]
+[ext_resource type="Texture2D" uid="uid://cmxf8iij72dxi" path="res://gra/kenney_assets/tilemap_packed.png" id="1_oc0a5"]
+[ext_resource type="Texture2D" uid="uid://dt2dekhwcjnk" path="res://gra/Explosions pack/explosion-1-b/spritesheet.png" id="3_fnmyy"]
+[ext_resource type="Texture2D" uid="uid://cjwtr4gswea2f" path="res://gra/Explosions pack/explosion-1-a/spritesheet.png" id="4_rtky4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fnmyy"]
+atlas = ExtResource("3_fnmyy")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rtky4"]
+atlas = ExtResource("3_fnmyy")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6g63d"]
+atlas = ExtResource("3_fnmyy")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o2w0h"]
+atlas = ExtResource("3_fnmyy")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ty0jf"]
+atlas = ExtResource("3_fnmyy")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ncbeo"]
+atlas = ExtResource("3_fnmyy")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hcmrl"]
+atlas = ExtResource("3_fnmyy")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_282au"]
+atlas = ExtResource("3_fnmyy")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mck6p"]
+atlas = ExtResource("4_rtky4")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i2wx6"]
+atlas = ExtResource("4_rtky4")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qbbl6"]
+atlas = ExtResource("4_rtky4")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0vyk"]
+atlas = ExtResource("4_rtky4")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pq63d"]
+atlas = ExtResource("4_rtky4")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pjdxj"]
+atlas = ExtResource("4_rtky4")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_746ym"]
+atlas = ExtResource("4_rtky4")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k1d7j"]
+atlas = ExtResource("4_rtky4")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_767vw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fnmyy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rtky4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6g63d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o2w0h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ty0jf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ncbeo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hcmrl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_282au")
+}],
+"loop": false,
+"name": &"explosion",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mck6p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i2wx6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qbbl6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k0vyk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pq63d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pjdxj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_746ym")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k1d7j")
+}],
+"loop": false,
+"name": &"visble_effect",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_767vw"]
+size = Vector2(17.6, 17.6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fnmyy"]
+size = Vector2(45, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rtky4"]
+size = Vector2(16.8, 1.6)
+
+[node name="mystry_box" type="StaticBody2D"]
+z_index = 5
+scale = Vector2(2.5, 2.5)
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_767vw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_oc0a5")
+region_enabled = true
+region_rect = Rect2(180, 0, 18, 18)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2.98023e-08, 1.19209e-07)
+sprite_frames = SubResource("SpriteFrames_767vw")
+animation = &"visble_effect"
+frame = 7
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.00136e-06, 4.05312e-07)
+shape = SubResource("RectangleShape2D_767vw")
+
+[node name="open_area" type="Area2D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="open_area"]
+position = Vector2(-2.98023e-08, -2.38419e-07)
+shape = SubResource("RectangleShape2D_fnmyy")
+
+[node name="timer" type="Node" parent="."]
+
+[node name="anmi_timer" type="Timer" parent="timer"]
+one_shot = true
+
+[node name="visble_timer" type="Timer" parent="timer"]
+wait_time = 0.1
+one_shot = true
+
+[node name="markers" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="markers"]
+position = Vector2(0.400001, -9.53674e-07)
+
+[node name="touch_area" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="touch_area"]
+position = Vector2(-3.76158e-37, 8)
+shape = SubResource("RectangleShape2D_rtky4")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_entered" from="open_area" to="." method="_on_open_area_body_entered"]
+[connection signal="body_exited" from="open_area" to="." method="_on_open_area_body_exited"]
+[connection signal="timeout" from="timer/anmi_timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="timer/visble_timer" to="." method="_on_visble_timer_timeout"]
+[connection signal="body_entered" from="touch_area" to="." method="_on_touch_area_body_entered"]

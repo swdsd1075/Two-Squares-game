@@ -1,0 +1,123 @@
+[gd_scene load_steps=16 format=3 uid="uid://f4pttt2e1ars"]
+
+[ext_resource type="Script" uid="uid://divrjmru1v4jv" path="res://Scripts/speed_item.gd" id="1_elkkw"]
+[ext_resource type="Texture2D" uid="uid://b2mxcdncbdpb2" path="res://gra/speed_logo.png" id="2_gy02m"]
+[ext_resource type="Texture2D" uid="uid://c3wnpi3ono8qo" path="res://gra/game Player anim/Player_1/paetcals_shap.png" id="2_y0qva"]
+[ext_resource type="Texture2D" uid="uid://cjwtr4gswea2f" path="res://gra/Explosions pack/explosion-1-a/spritesheet.png" id="4_k4gb0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_elkkw"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gy02m"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 14.46
+angle_min = -720.0
+angle_max = 720.0
+angular_velocity_min = -1.60933e-05
+angular_velocity_max = -1.60933e-05
+gravity = Vector3(0, -13, 0)
+scale_min = 0.02
+scale_max = 0.1
+color = Color(0.901961, 0.713726, 0.0980392, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tavro"]
+atlas = ExtResource("4_k4gb0")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7yw05"]
+atlas = ExtResource("4_k4gb0")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ky2b"]
+atlas = ExtResource("4_k4gb0")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6nkk5"]
+atlas = ExtResource("4_k4gb0")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4c4n"]
+atlas = ExtResource("4_k4gb0")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0umep"]
+atlas = ExtResource("4_k4gb0")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ayxfe"]
+atlas = ExtResource("4_k4gb0")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2gvd4"]
+atlas = ExtResource("4_k4gb0")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wwhe3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tavro")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7yw05")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ky2b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6nkk5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t4c4n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0umep")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ayxfe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2gvd4")
+}],
+"loop": false,
+"name": &"visble_effect",
+"speed": 10.0
+}]
+
+[node name="speed_item" type="Area2D"]
+scale = Vector2(1.8, 1.8)
+collision_layer = 4
+script = ExtResource("1_elkkw")
+
+[node name="effect_timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_elkkw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, 1.49012e-08)
+rotation = -0.254818
+scale = Vector2(0.82, 0.82)
+texture = ExtResource("2_gy02m")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 17
+texture = ExtResource("2_y0qva")
+lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_gy02m")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_wwhe3")
+animation = &"visble_effect"
+frame = 7
+frame_progress = 1.0
+
+[node name="visble_timer" type="Timer" parent="."]
+wait_time = 0.1
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="effect_timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="visble_timer" to="." method="_on_visble_timer_timeout"]

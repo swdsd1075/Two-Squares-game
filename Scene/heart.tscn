@@ -1,0 +1,118 @@
+[gd_scene load_steps=16 format=3 uid="uid://bmql5qa48fghk"]
+
+[ext_resource type="Script" uid="uid://dtas3l2djm1x7" path="res://Scripts/heart.gd" id="1_ri2yj"]
+[ext_resource type="Texture2D" uid="uid://cmxf8iij72dxi" path="res://gra/kenney_assets/tilemap_packed.png" id="2_rqi32"]
+[ext_resource type="Texture2D" uid="uid://cjwtr4gswea2f" path="res://gra/Explosions pack/explosion-1-a/spritesheet.png" id="3_km5yu"]
+[ext_resource type="Texture2D" uid="uid://c3wnpi3ono8qo" path="res://gra/game Player anim/Player_1/paetcals_shap.png" id="4_tavro"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_km5yu"]
+size = Vector2(14, 12)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7yw05"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 9.3
+angle_min = -720.0
+angle_max = 720.0
+angular_velocity_min = -1.60933e-05
+angular_velocity_max = -1.60933e-05
+gravity = Vector3(0, -13, 0)
+scale_min = 0.02
+scale_max = 0.1
+color = Color(0.988235, 0.407843, 0.231373, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tavro"]
+atlas = ExtResource("3_km5yu")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7yw05"]
+atlas = ExtResource("3_km5yu")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ky2b"]
+atlas = ExtResource("3_km5yu")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6nkk5"]
+atlas = ExtResource("3_km5yu")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4c4n"]
+atlas = ExtResource("3_km5yu")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0umep"]
+atlas = ExtResource("3_km5yu")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ayxfe"]
+atlas = ExtResource("3_km5yu")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2gvd4"]
+atlas = ExtResource("3_km5yu")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ghn10"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tavro")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7yw05")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ky2b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6nkk5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t4c4n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0umep")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ayxfe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2gvd4")
+}],
+"loop": false,
+"name": &"visble_effect",
+"speed": 10.0
+}]
+
+[node name="heart" type="Area2D"]
+scale = Vector2(2.7, 2.7)
+collision_layer = 4
+collision_mask = 5
+script = ExtResource("1_ri2yj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_rqi32")
+region_enabled = true
+region_rect = Rect2(74, 39, 14, 12)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_km5yu")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 20
+texture = ExtResource("4_tavro")
+lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_7yw05")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0.37037, 0)
+scale = Vector2(1.3, 1.3)
+sprite_frames = SubResource("SpriteFrames_ghn10")
+animation = &"visble_effect"
+frame = 7
+frame_progress = 1.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

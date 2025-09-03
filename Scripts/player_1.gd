@@ -1,44 +1,56 @@
-extends CharacterBody2D
+extends player
 
-var attack_timer : bool = false
-var attack_area : bool = false
-@export var speed: int = 200
-@export var gravity: int = 900
-@export var jump_force: int = -350
-@export var attack_boost : int = 16000
-@export var attack_boost_friction := 30000
-var current_boost := 0.0
-var target: CharacterBody2D
-var hit_timer : bool = false
-@export var damage : int = 10
+
+var player_1_delta  = 0
 
 func check_player_1():pass #Nothing here
 
-#hit func
-func hit(damage):
-	Globels.player_1_health -= damage
-	if Globels.player_1_health <= 0:
-		$AnimatedSprite2D.play("die") #die after make anmi die
-		await $AnimatedSprite2D.animation_finished
-		queue_free()
-	$AnimatedSprite2D.modulate = "ff0422"
-	await get_tree().create_timer(0.17).timeout
-	$AnimatedSprite2D.modulate = "ffffff"
+
+
 
 func _physics_process(delta):
-	if not is_on_floor():
+	if death_var:
+		$GPUParticles2D.visible = false
+		$spwon_effect.visible = false
+	choice_player = 1
+	player_1_delta = delta
+	Globels.player_1_grenades = grenades
+	if die:return
+	#globals var == local var 
+	#global_position = Globels.player_1_pos
+	
+	if not is_on_floor() :#and Globels.player_1_gra_bool:
 		velocity.y += gravity * delta
-
+		
 	var direction = Input.get_action_strength("right_player_1") - Input.get_action_strength("left_player_1")
 	if not attack_timer:
 		velocity.x = direction * speed
-	#from chatgpt
+	#from chatgpt attack_1
 	if current_boost != 0:
 		velocity.x += current_boost * delta
 		current_boost = move_toward(current_boost, 0, attack_boost_friction * delta)
 
 	if not attack_timer and Input.is_action_just_pressed("Jump_player_1") and is_on_floor():
 		velocity.y = jump_force
+			
+	#attack_2
+	if Input.is_action_just_pressed("attack_2_player_1") and not attack_2_timer and grenades > 0:
+		attack_2_timer = true
+		grenades -= 1
+		$timers/Attack_2_timer.start()
+		var grenade = grenade_scene.instantiate()
+		grenade.global_position = global_position
+		#for move the grenade
+		if $AnimatedSprite2D.flip_h:
+			grenade.linear_velocity = Vector2(-250, -70)
+			grenade.angular_velocity = -6.0
+		else:
+			grenade.linear_velocity = Vector2(250, -70)
+			grenade.angular_velocity = 6.0
+
+
+
+		$"../../projectiles".add_child(grenade)
 
 	move_and_slide()
 
@@ -49,6 +61,8 @@ func _physics_process(delta):
 	#hit system
 	if hit_timer and attack_area:
 		target.hit(damage)
+		Globels.hit_dmg_win_effect[0] += damage
+		Globels.player_score[0] += damage
 		hit_timer = false
 	if direction > 0:
 		$AnimatedSprite2D.flip_h = false
@@ -57,7 +71,7 @@ func _physics_process(delta):
 
 	if not attack_timer and not hit_timer and Input.is_action_just_pressed("attack_player_1"):
 		attack_timer = true
-		$Timers/Attack_timer.start()
+		$timers/Attack_timer.start()
 		$AnimatedSprite2D.play("attack")
 
 func _on_attack_area_body_entered(body: Node2D) -> void:
@@ -77,9 +91,13 @@ func _on_attack_timer_timeout() -> void:
 	else:
 		current_boost = attack_boost
 	velocity.y = -100
-	$Timers/Hit_timer.start()
+	$timers/Hit_timer.start()
 	hit_timer = true
 
 
 func _on_hit_timer_timeout() -> void:
 	hit_timer = false
+
+
+func _on_attack_2_timer_timeout() -> void:
+	attack_2_timer = false                                          

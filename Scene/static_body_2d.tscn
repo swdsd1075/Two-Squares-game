@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://vwkgm3d1vg1i"]
+
+[ext_resource type="Script" uid="uid://b8vkpr7d7m3s1" path="res://Scripts/static_body_2d.gd" id="1_mphq1"]
+[ext_resource type="Texture2D" uid="uid://cmxf8iij72dxi" path="res://gra/kenney_assets/tilemap_packed.png" id="2_rviwl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mphq1"]
+size = Vector2(20, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rviwl"]
+size = Vector2(20, 5)
+
+[node name="jump_boost" type="StaticBody2D"]
+scale = Vector2(2.4, 2.4)
+collision_layer = 4
+script = ExtResource("1_mphq1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_mphq1")
+
+[node name="player_enetr_area" type="Area2D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_enetr_area"]
+position = Vector2(0, -7.5)
+shape = SubResource("RectangleShape2D_rviwl")
+
+[node name="image_close" type="Sprite2D" parent="."]
+texture = ExtResource("2_rviwl")
+region_enabled = true
+region_rect = Rect2(126, 98, 18, 10)
+
+[node name="image_open" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -2)
+texture = ExtResource("2_rviwl")
+region_enabled = true
+region_rect = Rect2(144, 94, 18, 14)
+
+[connection signal="body_entered" from="player_enetr_area" to="." method="_on_player_enetr_area_body_entered"]
+[connection signal="body_exited" from="player_enetr_area" to="." method="_on_player_enetr_area_body_exited"]

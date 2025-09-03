@@ -1,0 +1,111 @@
+[gd_scene load_steps=15 format=3 uid="uid://kqif7cvtuol5"]
+
+[ext_resource type="Script" uid="uid://b0u8r3d2r5640" path="res://Scripts/mystry_box.gd" id="1_767vw"]
+[ext_resource type="Texture2D" uid="uid://cmxf8iij72dxi" path="res://gra/kenney_assets/tilemap_packed.png" id="1_oc0a5"]
+[ext_resource type="Texture2D" uid="uid://dt2dekhwcjnk" path="res://gra/Explosions pack/explosion-1-b/spritesheet.png" id="3_fnmyy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fnmyy"]
+atlas = ExtResource("3_fnmyy")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rtky4"]
+atlas = ExtResource("3_fnmyy")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6g63d"]
+atlas = ExtResource("3_fnmyy")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o2w0h"]
+atlas = ExtResource("3_fnmyy")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ty0jf"]
+atlas = ExtResource("3_fnmyy")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ncbeo"]
+atlas = ExtResource("3_fnmyy")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hcmrl"]
+atlas = ExtResource("3_fnmyy")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_282au"]
+atlas = ExtResource("3_fnmyy")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_767vw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fnmyy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rtky4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6g63d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o2w0h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ty0jf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ncbeo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hcmrl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_282au")
+}],
+"loop": false,
+"name": &"explosion",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_767vw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fnmyy"]
+size = Vector2(45, 26)
+
+[node name="mystry_box" type="StaticBody2D"]
+scale = Vector2(2.5, 2.5)
+collision_layer = 4
+script = ExtResource("1_767vw")
+time = null
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_oc0a5")
+region_enabled = true
+region_rect = Rect2(180, 0, 18, 18)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -20)
+sprite_frames = SubResource("SpriteFrames_767vw")
+animation = &"explosion"
+frame = 7
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_767vw")
+
+[node name="open_area" type="Area2D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="open_area"]
+position = Vector2(-0.5, -3)
+shape = SubResource("RectangleShape2D_fnmyy")
+
+[node name="timer" type="Node" parent="."]
+
+[node name="Timer" type="Timer" parent="timer"]
+one_shot = true
+
+[connection signal="body_entered" from="open_area" to="." method="_on_open_area_body_entered"]
+[connection signal="body_exited" from="open_area" to="." method="_on_open_area_body_exited"]
+[connection signal="timeout" from="timer/Timer" to="." method="_on_timer_timeout"]
