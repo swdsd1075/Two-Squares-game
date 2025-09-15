@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://m3k87ghcaiy4"]
+[gd_scene load_steps=25 format=4 uid="uid://m3k87ghcaiy4"]
 
 [ext_resource type="PackedScene" uid="uid://cln7hdithtj3a" path="res://Scene/player_1.tscn" id="1_3okoh"]
 [ext_resource type="Script" uid="uid://cv5kkmbhi88af" path="res://Scripts/map_1.gd" id="1_yaitr"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cdckb16ebw0bk" path="res://Scene/greande.tscn" id="8_k55qd"]
 [ext_resource type="PackedScene" uid="uid://cedt4pjp5gga7" path="res://Scene/area_2d.tscn" id="8_yf5g6"]
 [ext_resource type="PackedScene" uid="uid://kqif7cvtuol5" path="res://Scene/mystry_box.tscn" id="10_tij0l"]
+[ext_resource type="PackedScene" uid="uid://5yxh0pn5nfpw" path="res://Scene/rocket_item.tscn" id="11_b8gke"]
 [ext_resource type="PackedScene" uid="uid://bl7f2y2oksxb0" path="res://Scene/ui.tscn" id="11_xemjw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b8gke"]
@@ -398,6 +399,7 @@ wait_time = 0.1
 one_shot = true
 
 [node name="item_spown_timer" type="Timer" parent="timers"]
+wait_time = 3.0
 autostart = true
 
 [node name="if_die_effect_timer" type="Timer" parent="timers"]
@@ -664,8 +666,10 @@ position = Vector2(-15, -350)
 [node name="mystry_box2" parent="items" instance=ExtResource("10_tij0l")]
 position = Vector2(-448, 75)
 
+[node name="rocket_item" parent="items" instance=ExtResource("11_b8gke")]
+position = Vector2(-267, -228)
+
 [node name="UI" parent="." instance=ExtResource("11_xemjw")]
-visible = false
 
 [connection signal="timeout" from="timers/Zoom_out_in_timer" to="." method="_on_zoom_out_in_timer_timeout"]
 [connection signal="timeout" from="timers/item_spown_timer" to="." method="_on_item_spown_timer_timeout"]

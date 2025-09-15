@@ -2,6 +2,8 @@ extends Node
 
 
 #this is for player_1 or 2 propties
+var player_speed_propties : Array = [0,0]
+var player_damage_propties : Array = [0,0]
 var player_score : Array = [0,0]
 var hit_dmg_win_effect : Array = [0,0]
 var damage_win_effect : Array = [0,0]

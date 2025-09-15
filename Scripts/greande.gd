@@ -30,6 +30,7 @@ func _physics_process(delta: float) -> void:
 func _on_timer_timeout() -> void:
 	grenade_start = true
 	gravity_scale = 0
+	$"../..".start_shake(15)
 	if player_2_eneter or player_1_eneter:
 		for player in targets:
 			player.hit(damage)

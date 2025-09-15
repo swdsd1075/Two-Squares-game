@@ -3,6 +3,7 @@ extends Area2D
 var if_player_enter = false
 @export var time : float = 3
 @export var speed : int = 100
+
 signal player_speeding
 signal player_not_speeding
 var target
@@ -32,8 +33,10 @@ func _on_body_entered(body: Node2D) -> void:
 	if not if_player_enter:
 		$effect_timer.wait_time = time
 		if "check_player_1" in body:
+			Globels.player_speed_propties[0] += speed
 			Globels.player_score[0] += 3
 		elif "check_player_2" in body:
+			Globels.player_speed_propties[1] += speed
 			Globels.player_score[1] += 3
 		if_player_enter = true
 		body.speed += speed
@@ -45,6 +48,11 @@ func _on_body_entered(body: Node2D) -> void:
 func _on_timer_timeout() -> void:
 	player_not_speeding.emit()
 	target.speed -= speed
+	#speed Globels
+	if "check_player_1" in target:
+		Globels.player_speed_propties[0] -= speed
+	elif "check_player_2" in target:
+		Globels.player_speed_propties[1] -= speed
 	queue_free()
 
 

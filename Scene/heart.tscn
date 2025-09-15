@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dtas3l2djm1x7" path="res://Scripts/heart.gd" id="1_ri2yj"]
 [ext_resource type="Texture2D" uid="uid://cmxf8iij72dxi" path="res://gra/kenney_assets/tilemap_packed.png" id="2_rqi32"]
 [ext_resource type="Texture2D" uid="uid://cjwtr4gswea2f" path="res://gra/Explosions pack/explosion-1-a/spritesheet.png" id="3_km5yu"]
-[ext_resource type="Texture2D" uid="uid://c3wnpi3ono8qo" path="res://gra/game Player anim/Player_1/paetcals_shap.png" id="4_tavro"]
+[ext_resource type="Texture2D" uid="uid://c3wnpi3ono8qo" path="res://gra/Player_1/paetcals_shap.png" id="4_tavro"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_km5yu"]
 size = Vector2(14, 12)

@@ -4,6 +4,10 @@ var player_1 : CharacterBody2D
 var player_2 : CharacterBody2D
 @onready var camera = $Players/Camera2D
 
+var shake_strength : float = 0.0
+var shake_decay : float = 19.0 # سرعة اختفاء الاهتزاز
+
+var rocket_item_scene = preload("res://Scene/rocket_item.tscn")
 var grenade_item_scene  = preload("res://Scene/grenades.tscn")
 var speed_item_scene  = preload("res://Scene/speed_item.tscn")
 var damage_item_scene  = preload("res://Scene/damage_item.tscn")
@@ -19,6 +23,8 @@ var if_die_effect : bool = false
 @export var extra_margin: float = 100.0   # مسافة أمان إضافية بين اللاعبين
 @export var distance_padding: float = 100.0       # مسافة إضافية بين اللاعبين
 
+func start_shake(strength: float = 10.0) -> void:
+	shake_strength = strength
 
 func _ready():
 	player_1 = get_node("Players/player_1")
@@ -26,10 +32,21 @@ func _ready():
 	#make the projectile node
 	$Players/player_1.projectiles_node = $projectiles
 	$Players/player_2.projectiles_node = $projectiles
-
+	#start_effect
+	
 func _process(delta):
 	#ui
 	#die partcels system
+	
+	if shake_strength > 0:
+		$Players/Camera2D.offset = Vector2(
+			randf_range(-shake_strength, shake_strength),
+			randf_range(-shake_strength, shake_strength)
+		)
+		shake_strength = max(shake_strength - shake_decay * delta, 0)
+	else:
+		$Players/Camera2D.offset = Vector2.ZERO
+	
 	if player_1 and player_2:
 		if ($Players/player_1.die_effect and not if_die_effect) or ($Players/player_2.die_effect and not if_die_effect):
 			if_die_effect = true
@@ -75,12 +92,13 @@ func _process(delta):
 @onready var spown_markers = $spown_markers.get_children() # جميع نقاط السبون
 
 func _on_die_area_body_entered(body: Node2D) -> void:
-	if body.has_method("check_player_1") or "check_player_1" in body: # التأكد إذا كان اللاعب 1 أو أي كائن آخر
+	if body.has_method("check_player_1") or body.has_method("check_player_2"): # التأكد إذا كان اللاعب 1 أو أي كائن آخر
 		var random_marker = spown_markers.pick_random()
 		body.position = random_marker.position
-	else:
-		var random_marker = spown_markers.pick_random()
-		body.position = random_marker.position
+		start_shake()
+		#spown partcals
+		if body.has_method("check_player_1"): $Players/player_1.spown_effect()
+		elif body.has_method("check_player_2"): $Players/player_2.spown_effect()
 
 @export var item_spown_timer : float = 0.1
 @onready var spown_items_points = $spown_items_markers.get_children()
@@ -105,18 +123,33 @@ func _on_item_spown_timer_timeout() -> void:
 	# قائمة العناصر
 	var items : Array = [
 		grenade_item_scene.instantiate(),
+		grenade_item_scene.instantiate(),
+		null,null,null,
+		rocket_item_scene.instantiate(),speed_item_scene.instantiate(),speed_item_scene.instantiate(),speed_item_scene.instantiate(),
+		speed_item_scene.instantiate(),
+		speed_item_scene.instantiate(),
+		speed_item_scene.instantiate(),
+		speed_item_scene.instantiate(),
+		speed_item_scene.instantiate(),
 		null,
-		speed_item_scene.instantiate(),
-		speed_item_scene.instantiate(),
-		speed_item_scene.instantiate(),
+		damage_item_scene.instantiate(),
+		damage_item_scene.instantiate(),
+		damage_item_scene.instantiate(),
+		damage_item_scene.instantiate(),
+		damage_item_scene.instantiate(),
+		damage_item_scene.instantiate(),
+		damage_item_scene.instantiate(),
+		damage_item_scene.instantiate(),
 		null,
-		damage_item_scene.instantiate(),
-		damage_item_scene.instantiate(),
-		damage_item_scene.instantiate(),
 		null,
 		heart_item_scene.instantiate(),
 		heart_item_scene.instantiate(),
 		random_box_scene.instantiate(),
+		heart_item_scene.instantiate(),
+		heart_item_scene.instantiate(),
+		random_box_scene.instantiate(),
+		heart_item_scene.instantiate(),
+		heart_item_scene.instantiate(),
 		null, null, null
 	]
 	

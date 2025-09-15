@@ -27,21 +27,27 @@ func _on_body_entered(body: Node2D) -> void:
 	if not if_player_enter:
 		if "check_player_1" in body:
 			Globels.player_score[0] += 3
+			Globels.player_damage_propties[0] += damage
 		elif "check_player_2" in body:
 			Globels.player_score[1] += 3
-
+			Globels.player_damage_propties[1] += damage
 		$effect_timer.wait_time = time
 		if_player_enter = true
 		target = body
-		body.damage += damage
+		body.damege += damage
 		body.grenade_damage += damage
+		
 		$effect_timer.start()
 		player_damaging.emit()
 		visible = false
 
 func _on_effect_timer_timeout() -> void:
 	player_not_damaging.emit()
-	target.damage -= damage
+	if "check_player_1" in target:
+		Globels.player_damage_propties[0] -= damage
+	elif "check_player_2" in target:
+		Globels.player_damage_propties[1] -= damage
+	target.damege -= damage
 	target.grenade_damage -= damage
 	queue_free()
 

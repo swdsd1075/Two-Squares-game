@@ -59,7 +59,9 @@ func _on_sittings_pressed() -> void:
 
 
 func _on_quit_pressed() -> void:
-	pass # Replace with function body.
+	tp_effect(false,true)
+	await get_tree().create_timer(0.6).timeout
+	get_tree().quit()
 
 
 func _on_texture_button_pressed() -> void:tp_effect(true,false)

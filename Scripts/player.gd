@@ -2,6 +2,11 @@ extends CharacterBody2D
 
 class_name player
 
+var rocket_scene : PackedScene = preload("res://Scene/target_rocket.tscn")
+var damage_on_off : bool = false
+var speed_on_off : bool = false
+@export var item_speed_value : int = 350 #the complete speed after increes
+@export var item_damage_value : int = 20 #the complete speed after increes
 var choice_player : int = 1
 var attack_timer : bool = false
 var attack_area : bool = false
@@ -13,7 +18,7 @@ var attack_area : bool = false
 var current_boost := 0.0
 var target: CharacterBody2D
 var hit_timer : bool = false
-@export var damage : int = 10
+@export var damege : int = 10
 @export var grenade_damage : int = 20
 
 var projectiles_node  = null
@@ -25,6 +30,45 @@ var die_effect : bool = false
 var enter_screen : bool = true #i dont know if that correct
 var the_last_pos : Vector2
 var death_var : bool = false
+var whats_the_effect : String = "speed"
+var if_has_rocket : bool = false
+var Global_rocket
+
+func chase_the_marker():
+	if if_has_rocket and is_instance_valid(Global_rocket):
+		if not Global_rocket.boom_active and not Global_rocket.start_chasing:
+			Global_rocket.position = $markers/rocket_position.global_position
+	else:
+		if_has_rocket = false
+#rocket create
+func rocket():
+	var rocket = rocket_scene.instantiate()
+	rocket.position = $markers/rocket_position.global_position
+	rocket.player = choice_player
+	$"../../projectiles".add_child(rocket)
+	Global_rocket = rocket
+	if_has_rocket = true
+
+func damage_or_speed_effect(type:String): #damage or speed
+	if not $CanvasLayer/texts/hbox.modulate == Color(1.0, 1.0, 1.0) or not $CanvasLayer/texts/hbox2.modulate == Color(1.0, 1.0, 1.0):
+		var the_type
+		if type == "speed":the_type = $CanvasLayer/texts/hbox2
+		elif type == "damege": the_type = $CanvasLayer/texts/hbox
+		else:print("oops this is error (your type)")
+		the_type.visible = true
+		var tween = create_tween().set_loops(4) 
+		tween.tween_property(the_type, "modulate:a", 1.0, 0.4).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+		tween.tween_property(the_type, "modulate:a", 0.0, 0.4).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	
+
+func spown_effect():
+	$spwon_effect.restart()
+
+func _ready() -> void:
+	Globels.player_speed_propties[0] = speed
+	Globels.player_speed_propties[1] = speed
+	Globels.player_damage_propties[0] = damege
+	Globels.player_damage_propties[1] = damege
 
 #attack_2 func
 func attack_2(player: int): #player_1_or_2
@@ -54,6 +98,7 @@ func death():
 		Globels.player_2_health = 0 
 	$AnimatedSprite2D2.play("death_effect")
 	await get_tree().create_timer(0.15).timeout
+	$"../..".start_shake(15)
 	$AnimatedSprite2D.visible = false
 	$spwon_effect.visible = false
 	await $AnimatedSprite2D2.animation_finished
@@ -61,7 +106,13 @@ func death():
 @onready var spown_markers = $"../../spown_markers".get_children()
 func hit(damage):
 	if not die:
-		damage += 100
+		#damage += 100
+		#hit partcals
+		if damege == item_damage_value:
+			$hit_partcals.amount += 25
+		else:
+			$hit_partcals.amount = 50
+		$hit_partcals.restart()
 		Globels.damage_win_effect[choice_player-1] += damage
 
 		if choice_player == 1:
@@ -92,6 +143,7 @@ func hit(damage):
 			# ✅ في حالة عنده قلوب يرجع يعيش
 			if (choice_player == 1 and Globels.player_1_heart > 1) \
 			or (choice_player == 2 and Globels.player_2_heart > 1):
+				$"../..".start_shake(10)
 				$spwon_effect.emitting = true
 				die_effect = true
 				$timers/die_effect_timer.start()

@@ -22,6 +22,39 @@ func _ready() -> void:
 	#$AnimationPlayer.play("win_player")
 	last_heart_1 = Globels.player_1_heart
 	last_heart_2 = Globels.player_2_heart
+	# start effect
+	$ColorRect.color = Color(0.0, 0.0, 0.0)
+	$start_effect/Label2.modulate = Color(1.0, 1.0, 1.0)
+	var text : String = "loading"
+	var tween_1 = create_tween()
+
+	# عمل تأثير "loading..."
+	for i in range(7):
+		if text != "loading...":
+			text += "."
+		else:
+			text = "loading"
+		tween_1.tween_callback(Callable($start_effect/Label2, "set_text").bind(text))
+		tween_1.tween_interval(0.44) # تأخير بين كل تحديث
+
+	await get_tree().create_timer(0.44*7).timeout
+
+	# اختفاء Label2
+	tween_1.tween_property($start_effect/Label2, "modulate", Color(0,0,0,0), 0.5)
+	$start_effect/Label2.modulate = "ffffff00"
+	await get_tree().create_timer(0.5).timeout
+
+	# ظهور Label1 وتغيير لون الـ ColorRect
+	var tween_2 = create_tween()
+	tween_2.tween_property($start_effect/Label, "modulate", Color(1,1,1,1), 0.5)
+	await get_tree().create_timer(1).timeout
+	var tween_3 = create_tween()
+	tween_3.tween_property($ColorRect, "color", Color(0,0,0,0), 0.4)
+	tween_3.tween_property($start_effect/Label,"modulate", Color(0,0,0,0),0.5)
+	
+	
+
+	
 
 func _process(_delta: float) -> void:
 	#if win_1_effect or win_2_effect:

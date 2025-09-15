@@ -850,5 +850,30 @@ theme_override_fonts/font = ExtResource("2_lfpiq")
 theme_override_font_sizes/font_size = 70
 text = "click (k) to skip"
 
+[node name="start_effect" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="start_effect"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.121569, 0.870588, 0.121569, 1)
+theme_override_fonts/font = ExtResource("2_lfpiq")
+theme_override_font_sizes/font_size = 199
+text = "start"
+
+[node name="Label2" type="Label" parent="start_effect"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_lfpiq")
+theme_override_font_sizes/font_size = 199
+text = "loading..."
+
 [connection signal="timeout" from="effect_timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="effect_time_timer" to="." method="_on_effect_time_timer_timeout"]

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://divrjmru1v4jv" path="res://Scripts/speed_item.gd" id="1_elkkw"]
 [ext_resource type="Texture2D" uid="uid://b2mxcdncbdpb2" path="res://gra/speed_logo.png" id="2_gy02m"]
-[ext_resource type="Texture2D" uid="uid://c3wnpi3ono8qo" path="res://gra/game Player anim/Player_1/paetcals_shap.png" id="2_y0qva"]
+[ext_resource type="Texture2D" uid="uid://c3wnpi3ono8qo" path="res://gra/Player_1/paetcals_shap.png" id="2_y0qva"]
 [ext_resource type="Texture2D" uid="uid://cjwtr4gswea2f" path="res://gra/Explosions pack/explosion-1-a/spritesheet.png" id="4_k4gb0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_elkkw"]

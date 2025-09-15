@@ -1,5 +1,6 @@
 extends StaticBody2D
 
+var rocket_item_scene = preload("res://Scene/rocket_item.tscn")
 var touch_walls : bool = false
 var grenade_item_scene  = preload("res://Scene/grenades.tscn")
 var speed_item_scene  = preload("res://Scene/speed_item.tscn")
@@ -41,10 +42,32 @@ func _physics_process(delta: float) -> void:
 		# قائمة العناصر (مع null)
 		var items : Array = [
 			grenade_item_scene.instantiate(),
+			grenade_item_scene.instantiate(),
+			null,null,null,null,
+			rocket_item_scene.instantiate(),speed_item_scene.instantiate(),speed_item_scene.instantiate(),speed_item_scene.instantiate(),
 			speed_item_scene.instantiate(),
+			speed_item_scene.instantiate(),
+			speed_item_scene.instantiate(),
+			speed_item_scene.instantiate(),
+			speed_item_scene.instantiate(),
+			null,null,null,null,
 			damage_item_scene.instantiate(),
+			damage_item_scene.instantiate(),
+			damage_item_scene.instantiate(),
+			damage_item_scene.instantiate(),
+			damage_item_scene.instantiate(),
+			damage_item_scene.instantiate(),
+			damage_item_scene.instantiate(),
+			damage_item_scene.instantiate(),
+			null,
+			null,
 			heart_item_scene.instantiate(),
-			null,null,null
+			heart_item_scene.instantiate(),
+			heart_item_scene.instantiate(),
+			heart_item_scene.instantiate(),
+			heart_item_scene.instantiate(),
+			heart_item_scene.instantiate(),
+			null, null, null
 		]
 		#create the item
 		var random_item = items.pick_random()
@@ -55,14 +78,14 @@ func _physics_process(delta: float) -> void:
 func _on_open_area_body_entered(body: Node2D) -> void:
 	if not if_opened:
 		target = body
-		player_1_enter = true
-		player_2_enter = true
+		if body.has_method("check_player_1"): player_1_enter = true
+		if body.has_method("check_player_2"):player_2_enter = true
 
 
 func _on_open_area_body_exited(body: Node2D) -> void:
 	if not if_opened:
-		player_1_enter = false
-		player_2_enter = false
+		if body.has_method("check_player_1"): player_1_enter = false
+		if body.has_method("check_player_2"): player_2_enter = false
 
 
 func _on_timer_timeout() -> void:

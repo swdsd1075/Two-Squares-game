@@ -19,6 +19,30 @@ func _physics_process(delta):
 	#globals var == local var 
 	#global_position = Globels.player_1_pos
 	
+	#rocket
+	chase_the_marker()
+	#speed effect
+	if (Globels.player_speed_propties[0] == item_speed_value and not speed_on_off):
+		speed_on_off = true
+		var tween = create_tween()
+		# التوينات كلها تشتغل بالتوازي
+		tween.parallel().tween_property($GPUParticles2D, "modulate", Color(0.251, 0.733, 1.0), 0.8)
+		damage_or_speed_effect("speed")
+	if (not Globels.player_speed_propties[0] == item_speed_value and speed_on_off):
+		speed_on_off = false
+		var tween = create_tween()
+		tween.tween_property($GPUParticles2D,"modulate",Color(0.0, 0.0, 0.0),0.5)
+	#damage_effect
+	if (Globels.player_damage_propties[0] == item_damage_value and not damage_on_off):
+		damage_on_off = true
+		var tween = create_tween()
+		tween.tween_property($GPUParticles2D,"modulate",Color(0.895, 0.107, 0.0),0.5)
+		damage_or_speed_effect("damege")
+	if (not Globels.player_damage_propties[0] == item_damage_value and damage_on_off):
+		damage_on_off = false
+		var tween = create_tween()
+		tween.tween_property($GPUParticles2D,"modulate",Color(0.0, 0.0, 0.0),0.5)
+	
 	if not is_on_floor() :#and Globels.player_1_gra_bool:
 		velocity.y += gravity * delta
 		
@@ -60,9 +84,9 @@ func _physics_process(delta):
 		$AnimatedSprite2D.play("Idle")
 	#hit system
 	if hit_timer and attack_area:
-		target.hit(damage)
-		Globels.hit_dmg_win_effect[0] += damage
-		Globels.player_score[0] += damage
+		target.hit(damege)
+		Globels.hit_dmg_win_effect[0] += damege
+		Globels.player_score[0] += damege
 		hit_timer = false
 	if direction > 0:
 		$AnimatedSprite2D.flip_h = false

@@ -15,7 +15,6 @@ emission_sphere_radius = 30.12
 gravity = Vector3(0, 0, 0)
 scale_min = 0.08
 scale_max = 0.13
-color = Color(0, 0, 0, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ygsma"]
 atlas = ExtResource("3_fig2j")
@@ -265,20 +264,18 @@ scale = Vector2(1.2, 1.2)
 script = ExtResource("2_sqjsi")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." index="0"]
+modulate = Color(0, 0, 0, 1)
 position = Vector2(1, -3)
 amount = 20
 texture = ExtResource("6_ygsma")
 lifetime = 0.5
 process_material = SubResource("ParticleProcessMaterial_ygsma")
 
-[node name="AnimatedSprite2D" parent="." index="1"]
+[node name="AnimatedSprite2D" parent="." index="2"]
 sprite_frames = SubResource("SpriteFrames_8ou0g")
 animation = &"die"
 frame = 18
 frame_progress = 1.0
-
-[node name="CollisionShape2D" parent="." index="2"]
-visible = false
 
 [node name="Attack_area" type="Area2D" parent="." index="3"]
 visible = false
@@ -286,7 +283,10 @@ visible = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attack_area" index="0"]
 shape = SubResource("RectangleShape2D_q8k12")
 
-[node name="VisibleOnScreenNotifier2D" parent="." index="4"]
+[node name="CollisionShape2D" parent="." index="4"]
+visible = false
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="5"]
 visible = false
 
 [connection signal="body_entered" from="Attack_area" to="." method="_on_attack_area_body_entered"]

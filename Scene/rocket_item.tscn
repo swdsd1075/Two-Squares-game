@@ -1,0 +1,116 @@
+[gd_scene load_steps=18 format=3 uid="uid://5yxh0pn5nfpw"]
+
+[ext_resource type="Script" uid="uid://cxnff4h6jta0c" path="res://Scripts/rocket_item.gd" id="1_shpm0"]
+[ext_resource type="Texture2D" uid="uid://ueuoxj2kc50p" path="res://gra/target_rocket/rocket_with_firing.png" id="2_shpm0"]
+[ext_resource type="Texture2D" uid="uid://c3wnpi3ono8qo" path="res://gra/Player_1/paetcals_shap.png" id="3_72qkj"]
+[ext_resource type="Texture2D" uid="uid://jemf8lxshbmy" path="res://gra/target_rocket/smoke_anmi-removebg-preview.png" id="3_75236"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_elkkw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_shpm0"]
+atlas = ExtResource("3_75236")
+region = Rect2(0, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h505h"]
+atlas = ExtResource("3_75236")
+region = Rect2(80, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_72qkj"]
+atlas = ExtResource("3_75236")
+region = Rect2(160, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8wlc6"]
+atlas = ExtResource("3_75236")
+region = Rect2(240, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4lpo5"]
+atlas = ExtResource("3_75236")
+region = Rect2(0, 80, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bc4q0"]
+atlas = ExtResource("3_75236")
+region = Rect2(80, 80, 80, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x6xkg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_shpm0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h505h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_72qkj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8wlc6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4lpo5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bc4q0")
+}],
+"loop": true,
+"name": &"idle_effect",
+"speed": 7.0
+}]
+
+[sub_resource type="Curve" id="Curve_shpm0"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.0492611, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.101887), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_d2ylu"]
+curve = SubResource("Curve_shpm0")
+
+[sub_resource type="Curve" id="Curve_h505h"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_d6v2w"]
+curve = SubResource("Curve_h505h")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_72qkj"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 61.9
+angle_min = -720.0
+angle_max = 720.0
+gravity = Vector3(100, 98, 0)
+scale_min = 0.1
+scale_max = 0.2
+color = Color(0.992157, 0.780392, 0.168627, 1)
+alpha_curve = SubResource("CurveTexture_d2ylu")
+emission_curve = SubResource("CurveTexture_d6v2w")
+
+[node name="rocket_item" type="Area2D"]
+scale = Vector2(0.2, 0.2)
+collision_layer = 4
+script = ExtResource("1_shpm0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_elkkw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 5.34943
+texture = ExtResource("2_shpm0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(135, 90)
+scale = Vector2(1.8, 1.8)
+sprite_frames = SubResource("SpriteFrames_x6xkg")
+animation = &"idle_effect"
+autoplay = "idle_effect"
+frame_progress = 0.0436946
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(100, 70)
+scale = Vector2(0.8, 0.8)
+amount = 70
+texture = ExtResource("3_72qkj")
+lifetime = 0.7
+process_material = SubResource("ParticleProcessMaterial_72qkj")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

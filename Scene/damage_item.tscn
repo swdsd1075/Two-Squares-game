@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://wlx7v3u7h55a"]
 
 [ext_resource type="Script" uid="uid://13g715w21bxp" path="res://Scripts/damage_item.gd" id="1_b1xkc"]
-[ext_resource type="Texture2D" uid="uid://c3wnpi3ono8qo" path="res://gra/game Player anim/Player_1/paetcals_shap.png" id="2_law6q"]
+[ext_resource type="Texture2D" uid="uid://c3wnpi3ono8qo" path="res://gra/Player_1/paetcals_shap.png" id="2_law6q"]
 [ext_resource type="Texture2D" uid="uid://bipjpygixmrd8" path="res://gra/damage icon.png" id="2_qaim7"]
 [ext_resource type="Texture2D" uid="uid://cjwtr4gswea2f" path="res://gra/Explosions pack/explosion-1-a/spritesheet.png" id="4_qaim7"]
 
@@ -85,7 +85,7 @@ animations = [{
 }]
 
 [node name="damage_item" type="Area2D"]
-scale = Vector2(0.26, 0.26)
+scale = Vector2(0.2, 0.2)
 collision_layer = 4
 script = ExtResource("1_b1xkc")
 
@@ -117,6 +117,6 @@ wait_time = 0.3
 one_shot = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="timeout" from="effect_timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="effect_timer" to="." method="_on_effect_timer_timeout"]
+[connection signal="timeout" from="effect_timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
