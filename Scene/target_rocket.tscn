@@ -1,10 +1,23 @@
-[gd_scene load_steps=22 format=3 uid="uid://g04pa35hsq4g"]
+[gd_scene load_steps=35 format=3 uid="uid://g04pa35hsq4g"]
 
 [ext_resource type="Script" uid="uid://ch7fxpw7yyjyk" path="res://Scripts/target_rocket.gd" id="1_6kn73"]
 [ext_resource type="Texture2D" uid="uid://ueuoxj2kc50p" path="res://gra/target_rocket/rocket_with_firing.png" id="2_efep7"]
 [ext_resource type="Texture2D" uid="uid://frue7c5mfsyx" path="res://gra/target_rocket/rocket_not_fire.png" id="3_bjt6n"]
-[ext_resource type="Texture2D" uid="uid://c3wnpi3ono8qo" path="res://gra/Player_1/paetcals_shap.png" id="4_bjt6n"]
+[ext_resource type="Texture2D" uid="uid://c3wnpi3ono8qo" path="res://gra/game Player anim/Player_1/paetcals_shap.png" id="4_bjt6n"]
 [ext_resource type="Texture2D" uid="uid://bjn7vteyuk3l8" path="res://gra/Explosions pack/explosion-1-f/Sprites.png" id="5_d2ylu"]
+[ext_resource type="Material" uid="uid://cqcc5kswquwhb" path="res://gra/canves_items/player_1.tres" id="5_d6v2w"]
+[ext_resource type="Texture2D" uid="uid://d1njb4delqp7a" path="res://gra/UI/circle.png" id="6_3laed"]
+[ext_resource type="AudioStream" uid="uid://sxd11p1m4c7r" path="res://Audios/rocket-loop-99748.mp3" id="8_bu7ri"]
+[ext_resource type="AudioStream" uid="uid://dltcxa861rilf" path="res://Audios/grenade-launcher-106342.mp3" id="9_bgh37"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3laed"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_d6v2w"]
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3kbfe"]
+light_mode = 1
 
 [sub_resource type="Curve" id="Curve_bjt6n"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.0492611, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.101887), 0.0, 0.0, 0, 0]
@@ -33,8 +46,40 @@ color = Color(0.992157, 0.780392, 0.168627, 1)
 alpha_curve = SubResource("CurveTexture_bjt6n")
 emission_curve = SubResource("CurveTexture_d2ylu")
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_3laed"]
+polygon = PackedVector2Array(-49.9997, 83.33351, -43.333065, 73.33349, 43.3336, 73.33317, 50.00029, 79.99982, 50.000385, 106.66648, -3.3330317, 83.33334, -49.999603, 110.00018)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_efep7"]
 size = Vector2(116, 177)
+
+[sub_resource type="Curve" id="Curve_d6v2w"]
+_limits = [-360.0, 360.0, 0.0, 1.0]
+_data = [Vector2(0.0049261, 360), 0.0, 0.0, 0, 0, Vector2(1, -360), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_e6ui1"]
+curve = SubResource("Curve_d6v2w")
+
+[sub_resource type="Curve" id="Curve_3kbfe"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.128079, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_rjdfd"]
+curve = SubResource("Curve_3kbfe")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yimko"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+angle_min = -720.0
+angle_max = 720.0
+angle_curve = SubResource("CurveTexture_e6ui1")
+spread = 180.0
+initial_velocity_max = 173.48
+gravity = Vector3(0, 0, 0)
+scale_min = 0.66999996
+scale_max = 0.9
+color = Color(1, 0.666874, 0.302317, 1)
+emission_curve = SubResource("CurveTexture_rjdfd")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3laed"]
 atlas = ExtResource("5_d2ylu")
@@ -112,22 +157,49 @@ script = ExtResource("1_6kn73")
 [node name="rocket_image" type="Node2D" parent="."]
 rotation = 1.5708
 
+[node name="PointLight2D" type="PointLight2D" parent="rocket_image"]
+visible = false
+material = SubResource("CanvasItemMaterial_3laed")
+position = Vector2(0.0003378657, 93.33333)
+rotation = -1.5708
+color = Color(1, 0.5686275, 0.07058824, 1)
+energy = 0.7
+shadow_enabled = true
+texture = ExtResource("6_3laed")
+
+[node name="PointLight2D2" type="PointLight2D" parent="rocket_image"]
+material = SubResource("CanvasItemMaterial_3laed")
+rotation = -1.5708
+color = Color(1, 0, 0.07058824, 1)
+energy = 0.7
+shadow_enabled = true
+texture = ExtResource("6_3laed")
+
 [node name="rocket_fire" type="Sprite2D" parent="rocket_image"]
 visible = false
+material = SubResource("CanvasItemMaterial_d6v2w")
 texture = ExtResource("2_efep7")
 
 [node name="rocket_no_fire" type="Sprite2D" parent="rocket_image"]
+material = SubResource("CanvasItemMaterial_3kbfe")
 texture = ExtResource("3_bjt6n")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="rocket_image"]
 visible = false
+material = ExtResource("5_d6v2w")
 position = Vector2(-3.33294, 106.667)
 rotation = -1.5708
-amount = 70
+emitting = false
+amount = 100
 texture = ExtResource("4_bjt6n")
 process_material = SubResource("ParticleProcessMaterial_bjt6n")
 
+[node name="LightOccluder2D" type="LightOccluder2D" parent="rocket_image"]
+position = Vector2(4000, 4000)
+occluder = SubResource("OccluderPolygon2D_3laed")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -8.5)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_efep7")
@@ -138,8 +210,28 @@ shape = SubResource("RectangleShape2D_efep7")
 wait_time = 5.0
 one_shot = true
 
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+color = Color(0.9764706, 0.8784314, 0.21960784, 1)
+energy = 0.0
+texture = ExtResource("6_3laed")
+texture_scale = 3.0
+
+[node name="spwon_effect" type="GPUParticles2D" parent="."]
+material = ExtResource("5_d6v2w")
+position = Vector2(0, 0.833336)
+emitting = false
+amount = 400
+texture = ExtResource("4_bjt6n")
+lifetime = 14.0
+one_shot = true
+speed_scale = 13.0
+explosiveness = 1.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_yimko")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 200
+material = ExtResource("5_d6v2w")
 scale = Vector2(35, 35)
 sprite_frames = SubResource("SpriteFrames_bjt6n")
 animation = &"explosion"
@@ -150,9 +242,25 @@ frame_progress = 1.0
 collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hit_area"]
+visible = false
 position = Vector2(-93.3334, -30)
 shape = SubResource("RectangleShape2D_d2ylu")
+
+[node name="sounds" type="Node2D" parent="."]
+
+[node name="RocketLoop99748" type="AudioStreamPlayer2D" parent="sounds"]
+scale = Vector2(0.99999994, 0.99999994)
+stream = ExtResource("8_bu7ri")
+volume_db = -12.0
+parameters/looping = true
+
+[node name="GrenadeLauncher106342" type="AudioStreamPlayer2D" parent="sounds"]
+scale = Vector2(0.99999994, 0.99999994)
+stream = ExtResource("9_bgh37")
+volume_db = 2.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
 [connection signal="timeout" from="timer/end_timer" to="." method="_on_end_timer_timeout"]
+[connection signal="body_entered" from="hit_area" to="." method="_on_hit_area_body_entered"]
+[connection signal="body_exited" from="hit_area" to="." method="_on_hit_area_body_exited"]

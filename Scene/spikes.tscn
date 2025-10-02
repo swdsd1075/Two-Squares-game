@@ -1,0 +1,62 @@
+[gd_scene load_steps=6 format=3 uid="uid://cedt4pjp5gga7"]
+
+[ext_resource type="Script" uid="uid://bgs86i3it384s" path="res://Scripts/spikes.gd" id="1_0v8x5"]
+[ext_resource type="Texture2D" uid="uid://cmxf8iij72dxi" path="res://gra/kenney_assets/tilemap_packed.png" id="2_vd486"]
+[ext_resource type="AudioStream" uid="uid://c2p4p8e85whoj" path="res://Audios/button-press-382713.mp3" id="3_hvh0p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0v8x5"]
+size = Vector2(18, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hvh0p"]
+size = Vector2(78.63636, 39.54545)
+
+[node name="spikes" type="Area2D"]
+scale = Vector2(2.2, 2.2)
+collision_layer = 4
+collision_mask = 5
+script = ExtResource("1_0v8x5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_0v8x5")
+
+[node name="image_open" type="Sprite2D" parent="."]
+texture = ExtResource("2_vd486")
+region_enabled = true
+region_rect = Rect2(144, 63, 18, 9)
+
+[node name="image_close" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, 4)
+texture = ExtResource("2_vd486")
+region_enabled = true
+region_rect = Rect2(144, 71, 18, 1)
+
+[node name="timers" type="Node2D" parent="."]
+
+[node name="open_and_close_timer" type="Timer" parent="timers"]
+wait_time = 0.7
+autostart = true
+
+[node name="hit_timer" type="Timer" parent="timers"]
+wait_time = 0.1
+one_shot = true
+
+[node name="ButtonPress382713" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-0.9090909, -0.45454544)
+stream = ExtResource("3_hvh0p")
+volume_db = -7.0
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.22727011, -10.227271)
+shape = SubResource("RectangleShape2D_hvh0p")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="timers/open_and_close_timer" to="." method="_on_open_and_close_timer_timeout"]
+[connection signal="timeout" from="timers/hit_timer" to="." method="_on_hit_timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

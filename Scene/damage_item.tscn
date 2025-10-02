@@ -1,16 +1,20 @@
-[gd_scene load_steps=16 format=3 uid="uid://wlx7v3u7h55a"]
+[gd_scene load_steps=19 format=3 uid="uid://wlx7v3u7h55a"]
 
 [ext_resource type="Script" uid="uid://13g715w21bxp" path="res://Scripts/damage_item.gd" id="1_b1xkc"]
-[ext_resource type="Texture2D" uid="uid://c3wnpi3ono8qo" path="res://gra/Player_1/paetcals_shap.png" id="2_law6q"]
+[ext_resource type="Texture2D" uid="uid://c3wnpi3ono8qo" path="res://gra/game Player anim/Player_1/paetcals_shap.png" id="2_law6q"]
 [ext_resource type="Texture2D" uid="uid://bipjpygixmrd8" path="res://gra/damage icon.png" id="2_qaim7"]
+[ext_resource type="Material" uid="uid://cqcc5kswquwhb" path="res://gra/canves_items/player_1.tres" id="3_clnt7"]
 [ext_resource type="Texture2D" uid="uid://cjwtr4gswea2f" path="res://gra/Explosions pack/explosion-1-a/spritesheet.png" id="4_qaim7"]
+[ext_resource type="Texture2D" uid="uid://d1njb4delqp7a" path="res://gra/UI/circle.png" id="5_x6xkg"]
+[ext_resource type="AudioStream" uid="uid://cucudnqwxop4e" path="res://Audios/item-collected-1-367087.mp3" id="7_mauv6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_elkkw"]
+radius = 89.99999
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gy02m"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_x6xkg"]
 particle_flag_disable_z = true
 emission_shape = 1
-emission_sphere_radius = 128.0
+emission_sphere_radius = 113.89
 angle_min = -720.0
 angle_max = 720.0
 angular_velocity_min = -1.60933e-05
@@ -18,7 +22,6 @@ angular_velocity_max = -1.60933e-05
 gravity = Vector3(0, -13, 0)
 scale_min = 0.02
 scale_max = 0.1
-color = Color(0.976471, 0.992157, 0.996078, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tavro"]
 atlas = ExtResource("4_qaim7")
@@ -88,9 +91,10 @@ animations = [{
 scale = Vector2(0.2, 0.2)
 collision_layer = 4
 script = ExtResource("1_b1xkc")
+time = 5.5
 
 [node name="effect_timer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 5.5
 one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -100,12 +104,15 @@ shape = SubResource("CircleShape2D_elkkw")
 texture = ExtResource("2_qaim7")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = ExtResource("3_clnt7")
+position = Vector2(1.1368684e-13, -4.7683716e-07)
 amount = 20
 texture = ExtResource("2_law6q")
 lifetime = 2.0
-process_material = SubResource("ParticleProcessMaterial_gy02m")
+process_material = SubResource("ParticleProcessMaterial_x6xkg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = ExtResource("3_clnt7")
 scale = Vector2(12, 12)
 sprite_frames = SubResource("SpriteFrames_x6xkg")
 animation = &"visble_effect"
@@ -115,6 +122,15 @@ frame_progress = 1.0
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.3
 one_shot = true
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(10, -10)
+texture = ExtResource("5_x6xkg")
+texture_scale = 0.48
+
+[node name="ItemCollected1367087" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(74.99999, 54.999996)
+stream = ExtResource("7_mauv6")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="effect_timer" to="." method="_on_effect_timer_timeout"]

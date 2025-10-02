@@ -1,9 +1,12 @@
-[gd_scene load_steps=16 format=3 uid="uid://bmql5qa48fghk"]
+[gd_scene load_steps=19 format=3 uid="uid://bmql5qa48fghk"]
 
 [ext_resource type="Script" uid="uid://dtas3l2djm1x7" path="res://Scripts/heart.gd" id="1_ri2yj"]
 [ext_resource type="Texture2D" uid="uid://cmxf8iij72dxi" path="res://gra/kenney_assets/tilemap_packed.png" id="2_rqi32"]
+[ext_resource type="Material" uid="uid://cqcc5kswquwhb" path="res://gra/canves_items/player_1.tres" id="3_2ky2b"]
 [ext_resource type="Texture2D" uid="uid://cjwtr4gswea2f" path="res://gra/Explosions pack/explosion-1-a/spritesheet.png" id="3_km5yu"]
-[ext_resource type="Texture2D" uid="uid://c3wnpi3ono8qo" path="res://gra/Player_1/paetcals_shap.png" id="4_tavro"]
+[ext_resource type="Texture2D" uid="uid://c3wnpi3ono8qo" path="res://gra/game Player anim/Player_1/paetcals_shap.png" id="4_tavro"]
+[ext_resource type="Texture2D" uid="uid://d1njb4delqp7a" path="res://gra/UI/circle.png" id="5_7yw05"]
+[ext_resource type="AudioStream" uid="uid://cucudnqwxop4e" path="res://Audios/item-collected-1-367087.mp3" id="7_6nkk5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_km5yu"]
 size = Vector2(14, 12)
@@ -101,18 +104,30 @@ visible = false
 shape = SubResource("RectangleShape2D_km5yu")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = ExtResource("3_2ky2b")
 amount = 20
 texture = ExtResource("4_tavro")
 lifetime = 2.0
 process_material = SubResource("ParticleProcessMaterial_7yw05")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = ExtResource("3_2ky2b")
 position = Vector2(0.37037, 0)
 scale = Vector2(1.3, 1.3)
 sprite_frames = SubResource("SpriteFrames_ghn10")
 animation = &"visble_effect"
 frame = 7
 frame_progress = 1.0
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0.97958916, 0, 0.06730961, 1)
+energy = 1.37
+texture = ExtResource("5_7yw05")
+texture_scale = 0.05
+
+[node name="ItemCollected1367087" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-0.37037036, -0.37037036)
+stream = ExtResource("7_6nkk5")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

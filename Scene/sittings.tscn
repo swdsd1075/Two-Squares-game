@@ -1,0 +1,853 @@
+[gd_scene load_steps=25 format=3 uid="uid://dk5f1vreukxjk"]
+
+[ext_resource type="Script" uid="uid://b4d3njhs2xt8f" path="res://Scripts/sittings.gd" id="1_r2xnj"]
+[ext_resource type="Texture2D" uid="uid://de0o76mt14jme" path="res://gra/UI/wood log.png" id="2_kx4oy"]
+[ext_resource type="FontFile" uid="uid://dwumuhu4jd2uf" path="res://gra/fonts/Pixel Game.otf" id="3_vjsr8"]
+[ext_resource type="Texture2D" uid="uid://bf6xcqe7yddxr" path="res://gra/UI/‏‏resturt_button_pressed_2 - نسخة.png" id="4_8g7dj"]
+[ext_resource type="Texture2D" uid="uid://d3vd5nhr3eg1g" path="res://gra/UI/‏‏resturt_button - نسخة.png" id="5_rsdpj"]
+[ext_resource type="Texture2D" uid="uid://c3xbdaf1l2wjf" path="res://gra/game Player anim/Player_1/player_1_image.png" id="6_8g7dj"]
+[ext_resource type="Texture2D" uid="uid://cta8dg6rkohkh" path="res://gra/UI/quit button.png" id="6_req35"]
+[ext_resource type="Texture2D" uid="uid://bk81bna4f4jv0" path="res://gra/UI/controls/keyboard_a_outline.png" id="7_rsdpj"]
+[ext_resource type="Texture2D" uid="uid://dh0cnprs4ylvs" path="res://gra/UI/quit_button_pressed.png" id="7_sut6j"]
+[ext_resource type="Texture2D" uid="uid://be5ipxq4qheng" path="res://gra/UI/controls/keyboard_d_outline.png" id="8_req35"]
+[ext_resource type="Texture2D" uid="uid://db1i63lfalicr" path="res://gra/UI/controls/c_button.png" id="9_h8gfx"]
+[ext_resource type="Texture2D" uid="uid://cwoynhxsbj4ds" path="res://gra/UI/controls/keyboard_alt_outline.png" id="9_sut6j"]
+[ext_resource type="Texture2D" uid="uid://dcu0uxt2iwqvm" path="res://gra/UI/controls/keyboard_shift_icon_outline.png" id="10_at8d4"]
+[ext_resource type="Texture2D" uid="uid://b3xatl6jihanm" path="res://gra/UI/controls/x_buuton.png" id="10_jlqek"]
+[ext_resource type="Texture2D" uid="uid://ber8s2jiiu8ub" path="res://gra/UI/controls/keyboard_e_outline.png" id="11_x26wv"]
+[ext_resource type="Texture2D" uid="uid://cw2j3s5brhd48" path="res://gra/UI/controls/keyboard_space_icon_outline.png" id="12_1wmnn"]
+[ext_resource type="Texture2D" uid="uid://bvtkakprfr206" path="res://gra/game Player anim/Player_2/player_2_image.png" id="13_p78e6"]
+[ext_resource type="Texture2D" uid="uid://csdbysa2hhqyd" path="res://gra/UI/controls/keyboard_escape_outline.png" id="14_b2fh4"]
+[ext_resource type="Texture2D" uid="uid://c455e24t7mg6f" path="res://gra/UI/controls/keyboard_arrow_left_outline.png" id="14_fw30p"]
+[ext_resource type="Texture2D" uid="uid://lfhllomvktp5" path="res://gra/UI/controls/keyboard_arrow_right_outline.png" id="15_fw30p"]
+[ext_resource type="Texture2D" uid="uid://d3xrv04g7tuhj" path="res://gra/UI/controls/keyboard_enter_outline.png" id="16_6cu4f"]
+[ext_resource type="Texture2D" uid="uid://pgd730a5i64k" path="res://gra/UI/controls/keyboard_arrow_up_outline.png" id="17_t4177"]
+[ext_resource type="Texture2D" uid="uid://dqma5xfcb4vsm" path="res://gra/UI/controls/the_controler.png" id="21_fqt7o"]
+[ext_resource type="AudioStream" uid="uid://c2p4p8e85whoj" path="res://Audios/button-press-382713.mp3" id="21_w5o1c"]
+
+[node name="sittings" type="Control"]
+z_index = 15
+y_sort_enabled = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_r2xnj")
+
+[node name="sittings" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -124.0
+offset_right = 124.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="sittings"]
+layout_mode = 2
+theme_override_constants/separation = -756
+
+[node name="TextureRect" type="TextureRect" parent="sittings/HBoxContainer"]
+custom_minimum_size = Vector2(1100, 0)
+layout_mode = 2
+texture = ExtResource("2_kx4oy")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="sittings/HBoxContainer"]
+custom_minimum_size = Vector2(1100, 0)
+layout_mode = 2
+texture = ExtResource("2_kx4oy")
+expand_mode = 1
+flip_h = true
+
+[node name="the_sittings" type="Control" parent="sittings"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="sittings/the_sittings"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -143.0
+offset_right = 1045.0
+offset_bottom = 143.0
+grow_vertical = 2
+theme_override_constants/margin_left = 37
+theme_override_constants/margin_top = 21
+
+[node name="HBoxContainer" type="HBoxContainer" parent="sittings/the_sittings/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 53
+
+[node name="MarginContainer" type="MarginContainer" parent="sittings/the_sittings/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 307
+theme_override_constants/margin_top = -20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="sittings/the_sittings/MarginContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = -3
+
+[node name="gra" type="MarginContainer" parent="sittings/the_sittings/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_bottom = -14
+
+[node name="Label" type="Label" parent="sittings/the_sittings/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/gra"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.70488447, 0.69703054, 0.026865045, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_fonts/font = ExtResource("3_vjsr8")
+theme_override_font_sizes/font_size = 92
+text = "graphics"
+
+[node name="lights" type="MarginContainer" parent="sittings/the_sittings/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="sittings/the_sittings/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/lights"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="sittings/the_sittings/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/lights/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7058824, 0.5372549, 0.02745098, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_fonts/font = ExtResource("3_vjsr8")
+theme_override_font_sizes/font_size = 78
+text = "lights"
+
+[node name="play" type="TextureButton" parent="sittings/the_sittings/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/lights/HBoxContainer"]
+custom_minimum_size = Vector2(150, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("4_8g7dj")
+texture_pressed = ExtResource("5_rsdpj")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="sittings/the_sittings/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/lights/HBoxContainer/play"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.5
+offset_top = -20.0
+offset_right = 20.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 4
+
+[node name="Label" type="Label" parent="sittings/the_sittings/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/lights/HBoxContainer/play/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("3_vjsr8")
+theme_override_font_sizes/font_size = 45
+text = "off"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="partcals" type="MarginContainer" parent="sittings/the_sittings/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="sittings/the_sittings/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/partcals"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="sittings/the_sittings/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/partcals/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="sittings/the_sittings/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/partcals/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7058824, 0.5372549, 0.02745098, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_fonts/font = ExtResource("3_vjsr8")
+theme_override_font_sizes/font_size = 76
+text = "partcals "
+
+[node name="MarginContainer" type="MarginContainer" parent="sittings/the_sittings/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/partcals/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = -12
+
+[node name="play" type="TextureButton" parent="sittings/the_sittings/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/partcals/HBoxContainer/VBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(200, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("4_8g7dj")
+texture_pressed = ExtResource("5_rsdpj")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="sittings/the_sittings/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/partcals/HBoxContainer/VBoxContainer/MarginContainer/play"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.5
+offset_top = -20.0
+offset_right = 20.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 4
+
+[node name="Label" type="Label" parent="sittings/the_sittings/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/partcals/HBoxContainer/VBoxContainer/MarginContainer/play/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0.7219348, 0.25222743, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("3_vjsr8")
+theme_override_font_sizes/font_size = 45
+text = "on"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="controls" type="MarginContainer" parent="sittings/the_sittings/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/partcals/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = -16
+theme_override_constants/margin_top = 76
+
+[node name="play" type="TextureButton" parent="sittings/the_sittings/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/partcals/HBoxContainer/controls"]
+custom_minimum_size = Vector2(180, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("4_8g7dj")
+texture_pressed = ExtResource("5_rsdpj")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="sittings/the_sittings/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/partcals/HBoxContainer/controls/play"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.5
+offset_top = -20.0
+offset_right = 20.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 4
+
+[node name="Label" type="Label" parent="sittings/the_sittings/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/partcals/HBoxContainer/controls/play/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.5529556, 0.55295557, 0.55295557, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("3_vjsr8")
+theme_override_font_sizes/font_size = 45
+text = "controls"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer3" type="MarginContainer" parent="sittings/the_sittings/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = -73
+theme_override_constants/margin_top = -20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="sittings/the_sittings/MarginContainer/HBoxContainer/MarginContainer3"]
+layout_mode = 2
+theme_override_constants/separation = -3
+
+[node name="gra" type="MarginContainer" parent="sittings/the_sittings/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_bottom = -14
+
+[node name="Label" type="Label" parent="sittings/the_sittings/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/gra"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.70488447, 0.69703054, 0.026865045, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_fonts/font = ExtResource("3_vjsr8")
+theme_override_font_sizes/font_size = 93
+text = "gameplay"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="sittings/the_sittings/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="sittings/the_sittings/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7058824, 0.5372549, 0.02745098, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_fonts/font = ExtResource("3_vjsr8")
+theme_override_font_sizes/font_size = 78
+text = "time"
+
+[node name="MarginContainer" type="MarginContainer" parent="sittings/the_sittings/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+
+[node name="play" type="TextureButton" parent="sittings/the_sittings/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(150, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("4_8g7dj")
+texture_pressed = ExtResource("5_rsdpj")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="sittings/the_sittings/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer/MarginContainer/play"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.5
+offset_top = -20.0
+offset_right = 20.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 4
+
+[node name="Label" type="Label" parent="sittings/the_sittings/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer/MarginContainer/play/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0.6313726, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("3_vjsr8")
+theme_override_font_sizes/font_size = 45
+text = "chanses"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="sittings/the_sittings/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7058824, 0.5372549, 0.02745098, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_fonts/font = ExtResource("3_vjsr8")
+theme_override_font_sizes/font_size = 78
+text = "Difficulty"
+
+[node name="MarginContainer" type="MarginContainer" parent="sittings/the_sittings/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = -40
+
+[node name="play" type="TextureButton" parent="sittings/the_sittings/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(200, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("4_8g7dj")
+texture_pressed = ExtResource("5_rsdpj")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="sittings/the_sittings/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer/play"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.5
+offset_top = -20.0
+offset_right = 20.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 4
+
+[node name="Label" type="Label" parent="sittings/the_sittings/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer/play/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 0.6313726, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("3_vjsr8")
+theme_override_font_sizes/font_size = 45
+text = "Normal"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="controls" type="MarginContainer" parent="sittings/the_sittings"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 2278.0
+offset_top = 2676.0
+offset_right = 3132.0
+offset_bottom = 3114.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.9, 0.9)
+theme_override_constants/margin_top = 75
+theme_override_constants/margin_right = -87
+
+[node name="VBoxContainer" type="VBoxContainer" parent="sittings/the_sittings/controls"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="sittings/the_sittings/controls/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/separation = 37
+
+[node name="player 1" type="VBoxContainer" parent="sittings/the_sittings/controls/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/separation = 6
+
+[node name="MarginContainer" type="MarginContainer" parent="sittings/the_sittings/controls/VBoxContainer/HBoxContainer/player 1"]
+layout_mode = 2
+theme_override_constants/margin_left = 45
+
+[node name="HBoxContainer" type="HBoxContainer" parent="sittings/the_sittings/controls/VBoxContainer/HBoxContainer/player 1/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="sittings/the_sittings/controls/VBoxContainer/HBoxContainer/player 1/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = -1
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 4
+
+[node name="TextureRect" type="TextureRect" parent="sittings/the_sittings/controls/VBoxContainer/HBoxContainer/player 1/MarginContainer/HBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(85, 0)
+layout_mode = 2
+texture = ExtResource("6_8g7dj")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="sittings/the_sittings/controls/VBoxContainer/HBoxContainer/player 1/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_fonts/font = ExtResource("3_vjsr8")
+theme_override_font_sizes/font_size = 89
+text = "player 1"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="sittings/the_sittings/controls/VBoxContainer/HBoxContainer/player 1"]
+layout_mode = 2
+theme_override_constants/separation = 122
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="sittings/the_sittings/controls/VBoxContainer/HBoxContainer/player 1/HBoxContainer4"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TextureRect" type="TextureRect" parent="sittings/the_sittings/controls/VBoxContainer/HBoxContainer/player 1/HBoxContainer4/HBoxContainer2"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+texture = ExtResource("7_rsdpj")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="sittings/the_sittings/controls/VBoxContainer/HBoxContainer/player 1/HBoxContainer4/HBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_fonts/font = ExtResource("3_vjsr8")
+theme_override_font_sizes/font_size = 56
+text = "left"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="sittings/the_sittings/controls/VBoxContainer/HBoxContainer/player 1/HBoxContainer4"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="sittings/the_sittings/controls/VBoxContainer/HBoxContainer/player 1/HBoxContainer4/HBoxContainer3"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+texture = ExtResource("8_req35")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="sittings/the_sittings/controls/VBoxContainer/HBoxContainer/player 1/HBoxContainer4/HBoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_fonts/font = ExtResource("3_vjsr8")
+theme_override_font_sizes/font_size = 56
+text = "right"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="sittings/the_sittings/controls/VBoxContainer/HBoxContainer/player 1"]
+layout_mode = 2
+theme_override_constants/separation = 66
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="sittings/the_sittings/controls/VBoxContainer/HBoxContainer/player 1/HBoxContainer5"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="sittings/the_sittings/controls/VBoxContainer/HBoxContainer/player 1/HBoxContainer5/HBoxContainer2"]
+layout_mode = 2
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_bottom = 7
+
+[node name="TextureRect" type="TextureRect" parent="sittings/the_sittings/controls/VBoxContainer/HBoxContainer/player 1/HBoxContainer5/HBoxContainer2/MarginContainer"]
+custom_minimum_size = Vector2(45, 0)
+layout_mode = 2
+texture = ExtResource("9_h8gfx")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="sittings/the_sittings/controls/VBoxContainer/HBoxContainer/player 1/HBoxContainer5/HBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_fonts/font = ExtResource("3_vjsr8")
+theme_override_font_sizes/font_size = 56
+text = "grenade"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="sittings/the_sittings/controls/VBoxContainer/HBoxContainer/player 1/HBoxContainer5"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="sittings/the_sittings/controls/VBoxContainer/HBoxContainer/player 1/HBoxContainer5/HBoxContainer3"]
+layout_mode = 2
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_bottom = 7
+
+[node name="TextureRect" type="TextureRect" parent="sittings/the_sittings/controls/VBoxContainer/HBoxContainer/player 1/HBoxContainer5/HBoxContainer3/MarginContainer"]
+custom_minimum_size = Vector2(45, 0)
+layout_mode = 2
+texture = ExtResource("10_jlqek")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="sittings/the_sittings/controls/VBoxContainer/HBoxContainer/player 1/HBoxContainer5/HBoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_fonts/font = ExtResource("3_vjsr8")
+theme_override_font_sizes/font_size = 56
+text = "hit"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="sittings/the_sittings/controls/VBoxContainer/HBoxContainer/player 1"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="sittings/the_sittings/controls/VBoxContainer/HBoxContainer/player 1/HBoxContainer6"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TextureRect" type="TextureRect" parent="sittings/the_sittings/controls/VBoxContainer/HBoxContainer/player 1/HBoxContainer6/HBoxContainer2"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+texture = ExtResource("11_x26wv")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="sittings/the_sittings/controls/VBoxContainer/HBoxContainer/player 1/HBoxContainer6/HBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_fonts/font = ExtResource("3_vjsr8")
+theme_override_font_sizes/font_size = 56
+text = "use things"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="sittings/the_sittings/controls/VBoxContainer/HBoxContainer/player 1/HBoxContainer6"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="sittings/the_sittings/controls/VBoxContainer/HBoxContainer/player 1/HBoxContainer6/HBoxContainer3"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+texture = ExtResource("12_1wmnn")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="sittings/the_sittings/controls/VBoxContainer/HBoxContainer/player 1/HBoxContainer6/HBoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_fonts/font = ExtResource("3_vjsr8")
+theme_override_font_sizes/font_size = 56
+text = "jump"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="player 2" type="VBoxContainer" parent="sittings/the_sittings/controls/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/separation = 6
+
+[node name="MarginContainer" type="MarginContainer" parent="sittings/the_sittings/controls/VBoxContainer/HBoxContainer/player 2"]
+layout_mode = 2
+theme_override_constants/margin_left = 45
+
+[node name="HBoxContainer" type="HBoxContainer" parent="sittings/the_sittings/controls/VBoxContainer/HBoxContainer/player 2/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="sittings/the_sittings/controls/VBoxContainer/HBoxContainer/player 2/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = -1
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 4
+
+[node name="TextureRect" type="TextureRect" parent="sittings/the_sittings/controls/VBoxContainer/HBoxContainer/player 2/MarginContainer/HBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(85, 0)
+layout_mode = 2
+texture = ExtResource("13_p78e6")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="sittings/the_sittings/controls/VBoxContainer/HBoxContainer/player 2/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.53333336, 0.53333336, 0.53333336, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_fonts/font = ExtResource("3_vjsr8")
+theme_override_font_sizes/font_size = 89
+text = "player 2"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="sittings/the_sittings/controls/VBoxContainer/HBoxContainer/player 2"]
+layout_mode = 2
+theme_override_constants/separation = 122
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="sittings/the_sittings/controls/VBoxContainer/HBoxContainer/player 2/HBoxContainer4"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TextureRect" type="TextureRect" parent="sittings/the_sittings/controls/VBoxContainer/HBoxContainer/player 2/HBoxContainer4/HBoxContainer2"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+texture = ExtResource("14_fw30p")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="sittings/the_sittings/controls/VBoxContainer/HBoxContainer/player 2/HBoxContainer4/HBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_fonts/font = ExtResource("3_vjsr8")
+theme_override_font_sizes/font_size = 56
+text = "left"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="sittings/the_sittings/controls/VBoxContainer/HBoxContainer/player 2/HBoxContainer4"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="sittings/the_sittings/controls/VBoxContainer/HBoxContainer/player 2/HBoxContainer4/HBoxContainer3"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+texture = ExtResource("15_fw30p")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="sittings/the_sittings/controls/VBoxContainer/HBoxContainer/player 2/HBoxContainer4/HBoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_fonts/font = ExtResource("3_vjsr8")
+theme_override_font_sizes/font_size = 56
+text = "right"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="sittings/the_sittings/controls/VBoxContainer/HBoxContainer/player 2"]
+layout_mode = 2
+theme_override_constants/separation = 29
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="sittings/the_sittings/controls/VBoxContainer/HBoxContainer/player 2/HBoxContainer5"]
+layout_mode = 2
+theme_override_constants/separation = -1
+
+[node name="TextureRect" type="TextureRect" parent="sittings/the_sittings/controls/VBoxContainer/HBoxContainer/player 2/HBoxContainer5/HBoxContainer2"]
+custom_minimum_size = Vector2(80, 50)
+layout_mode = 2
+texture = ExtResource("9_sut6j")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="sittings/the_sittings/controls/VBoxContainer/HBoxContainer/player 2/HBoxContainer5/HBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_fonts/font = ExtResource("3_vjsr8")
+theme_override_font_sizes/font_size = 56
+text = "grenade"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="sittings/the_sittings/controls/VBoxContainer/HBoxContainer/player 2/HBoxContainer5"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="sittings/the_sittings/controls/VBoxContainer/HBoxContainer/player 2/HBoxContainer5/HBoxContainer3"]
+custom_minimum_size = Vector2(70, 80)
+layout_mode = 2
+texture = ExtResource("10_at8d4")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="sittings/the_sittings/controls/VBoxContainer/HBoxContainer/player 2/HBoxContainer5/HBoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_fonts/font = ExtResource("3_vjsr8")
+theme_override_font_sizes/font_size = 56
+text = "hit"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="sittings/the_sittings/controls/VBoxContainer/HBoxContainer/player 2"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="sittings/the_sittings/controls/VBoxContainer/HBoxContainer/player 2/HBoxContainer6"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TextureRect" type="TextureRect" parent="sittings/the_sittings/controls/VBoxContainer/HBoxContainer/player 2/HBoxContainer6/HBoxContainer2"]
+custom_minimum_size = Vector2(63, 0)
+layout_mode = 2
+texture = ExtResource("16_6cu4f")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="sittings/the_sittings/controls/VBoxContainer/HBoxContainer/player 2/HBoxContainer6/HBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_fonts/font = ExtResource("3_vjsr8")
+theme_override_font_sizes/font_size = 56
+text = "use things"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="sittings/the_sittings/controls/VBoxContainer/HBoxContainer/player 2/HBoxContainer6"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="sittings/the_sittings/controls/VBoxContainer/HBoxContainer/player 2/HBoxContainer6/HBoxContainer3"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+texture = ExtResource("17_t4177")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="sittings/the_sittings/controls/VBoxContainer/HBoxContainer/player 2/HBoxContainer6/HBoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_fonts/font = ExtResource("3_vjsr8")
+theme_override_font_sizes/font_size = 56
+text = "jump"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="sittings/the_sittings/controls/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 1
+
+[node name="esc_information" type="HBoxContainer" parent="sittings/the_sittings/controls/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="sittings/the_sittings/controls/VBoxContainer/MarginContainer/esc_information"]
+layout_mode = 2
+theme_override_constants/margin_top = -8
+
+[node name="TextureRect" type="TextureRect" parent="sittings/the_sittings/controls/VBoxContainer/MarginContainer/esc_information/MarginContainer"]
+custom_minimum_size = Vector2(68, 0)
+layout_mode = 2
+texture = ExtResource("14_b2fh4")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="sittings/the_sittings/controls/VBoxContainer/MarginContainer/esc_information"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_fonts/font = ExtResource("3_vjsr8")
+theme_override_font_sizes/font_size = 56
+text = "return"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="controlers" type="MarginContainer" parent="sittings/the_sittings/controls"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="sittings/the_sittings/controls/controlers"]
+custom_minimum_size = Vector2(600, 400)
+layout_mode = 2
+texture = ExtResource("21_fqt7o")
+expand_mode = 1
+
+[node name="quit_button" type="MarginContainer" parent="sittings"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/margin_left = 120
+theme_override_constants/margin_top = -33
+theme_override_constants/margin_right = 0
+
+[node name="TextureButton" type="TextureButton" parent="sittings/quit_button"]
+custom_minimum_size = Vector2(180, 180)
+layout_mode = 2
+texture_normal = ExtResource("6_req35")
+texture_pressed = ExtResource("7_sut6j")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="MarginContainer2" type="MarginContainer" parent="sittings/quit_button/TextureButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -62.0
+offset_top = -51.0
+offset_right = 62.0
+offset_bottom = 51.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 59
+
+[node name="Label" type="Label" parent="sittings/quit_button/TextureButton/MarginContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.70488447, 0.69703054, 0.026865045, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_fonts/font = ExtResource("3_vjsr8")
+theme_override_font_sizes/font_size = 44
+text = "return"
+
+[node name="the maker" type="MarginContainer" parent="sittings"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/margin_bottom = -6
+
+[node name="HBoxContainer" type="HBoxContainer" parent="sittings/the maker"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="sittings/the maker/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(4.5724212e-07, 0.48843533, 0.015047502, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_fonts/font = ExtResource("3_vjsr8")
+theme_override_font_sizes/font_size = 68
+text = "made by"
+
+[node name="Label2" type="Label" parent="sittings/the maker/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.69803923, 0.02745098, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_fonts/font = ExtResource("3_vjsr8")
+theme_override_font_sizes/font_size = 68
+text = "hazem"
+
+[node name="sounds" type="Node2D" parent="."]
+
+[node name="ButtonPress382713" type="AudioStreamPlayer2D" parent="sounds"]
+stream = ExtResource("21_w5o1c")
+volume_db = 7.0
+
+[connection signal="pressed" from="sittings/the_sittings/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/lights/HBoxContainer/play" to="." method="_on_play_sitting_pressed"]
+[connection signal="pressed" from="sittings/the_sittings/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/partcals/HBoxContainer/VBoxContainer/MarginContainer/play" to="." method="_on_partcals_pressed"]
+[connection signal="pressed" from="sittings/the_sittings/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/partcals/HBoxContainer/controls/play" to="." method="_on_controls_pressed"]
+[connection signal="pressed" from="sittings/the_sittings/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer/MarginContainer/play" to="." method="_on_time_pressed"]
+[connection signal="pressed" from="sittings/the_sittings/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer/play" to="." method="_on_diffaclity_pressed"]
+[connection signal="pressed" from="sittings/quit_button/TextureButton" to="." method="_on_texture_button_pressed"]

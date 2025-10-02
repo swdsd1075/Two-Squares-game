@@ -1,23 +1,31 @@
-[gd_scene load_steps=24 format=3 uid="uid://cdckb16ebw0bk"]
+[gd_scene load_steps=34 format=3 uid="uid://cdckb16ebw0bk"]
 
 [ext_resource type="Script" uid="uid://fq3m25e0l3ga" path="res://Scripts/greande.gd" id="1_87hok"]
-[ext_resource type="Texture2D" uid="uid://bui6i8qxlasfb" path="res://gra/Player_1/player_1_grenade.png" id="2_e3xsw"]
+[ext_resource type="Texture2D" uid="uid://bui6i8qxlasfb" path="res://gra/game Player anim/Player_1/player_1_grenade.png" id="2_e3xsw"]
 [ext_resource type="Texture2D" uid="uid://bkpthtc1bc1ee" path="res://gra/explosion_anmi.png" id="2_gpm6j"]
 [ext_resource type="Texture2D" uid="uid://sq2lh7kll6mk" path="res://gra/game Player anim/Player_2/player_2_grenade.png" id="3_00ux7"]
-[ext_resource type="Texture2D" uid="uid://c3wnpi3ono8qo" path="res://gra/Player_1/paetcals_shap.png" id="4_00ux7"]
+[ext_resource type="Texture2D" uid="uid://c3wnpi3ono8qo" path="res://gra/game Player anim/Player_1/paetcals_shap.png" id="4_00ux7"]
+[ext_resource type="Texture2D" uid="uid://d1njb4delqp7a" path="res://gra/UI/circle.png" id="5_dory6"]
+[ext_resource type="Material" uid="uid://cqcc5kswquwhb" path="res://gra/canves_items/player_1.tres" id="6_e6ui1"]
+[ext_resource type="AudioStream" uid="uid://dsc42634bjcxv" path="res://Audios/explosion-312361.mp3" id="8_rjdfd"]
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gpm6j"]
+[sub_resource type="Curve" id="Curve_e6ui1"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.5471698), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_g6f55"]
+curve = SubResource("Curve_e6ui1")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_e6ui1"]
+lifetime_randomness = 0.35
 particle_flag_disable_z = true
-emission_shape = 1
-emission_sphere_radius = 2.03
 angle_min = -720.0
 angle_max = 720.0
-angular_velocity_min = -1.60933e-05
-angular_velocity_max = -1.60933e-05
-gravity = Vector3(13, -13, 0)
-scale_min = 0.1
-scale_max = 0.2
-color = Color(0.947342, 0.302612, 0, 1)
+gravity = Vector3(45, -45, 0)
+scale_min = 4.0
+scale_max = 6.0
+color = Color(0.9852639, 0, 0.006221766, 1)
+alpha_curve = SubResource("CurveTexture_g6f55")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e3xsw"]
 radius = 9.0
@@ -128,10 +136,40 @@ animations = [{
 "speed": 13.0
 }]
 
+[sub_resource type="Curve" id="Curve_rjdfd"]
+_limits = [-360.0, 360.0, 0.0, 1.0]
+_data = [Vector2(0.0049261, 360), 0.0, 0.0, 0, 0, Vector2(1, -360), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_e6ui1"]
+curve = SubResource("Curve_rjdfd")
+
+[sub_resource type="Curve" id="Curve_g6f55"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.128079, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_rjdfd"]
+curve = SubResource("Curve_g6f55")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_u8ulu"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+angle_min = -720.0
+angle_max = 720.0
+angle_curve = SubResource("CurveTexture_e6ui1")
+spread = 180.0
+initial_velocity_max = 173.48
+gravity = Vector3(0, 0, 0)
+scale_min = 0.04
+scale_max = 0.19999999
+color = Color(1, 0.666874, 0.302317, 1)
+emission_curve = SubResource("CurveTexture_rjdfd")
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gpm6j"]
 size = Vector2(224, 210)
 
 [node name="greande" type="RigidBody2D"]
+z_index = 6
 collision_layer = 8
 collision_mask = 11
 script = ExtResource("1_87hok")
@@ -145,29 +183,58 @@ texture = ExtResource("2_e3xsw")
 visible = false
 texture = ExtResource("3_00ux7")
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="for_change_size"]
-position = Vector2(0, -11)
-amount = 17
-texture = ExtResource("4_00ux7")
-lifetime = 2.0
-process_material = SubResource("ParticleProcessMaterial_gpm6j")
+[node name="PointLight2D" type="PointLight2D" parent="for_change_size"]
+color = Color(0.89438266, 0.08521379, 0, 1)
+texture = ExtResource("5_dory6")
+texture_scale = 0.2
 
 [node name="timer" type="Node" parent="for_change_size"]
 
 [node name="Timer" type="Timer" parent="for_change_size/timer"]
 one_shot = true
 
+[node name="light_effect_timer" type="Timer" parent="for_change_size/timer"]
+wait_time = 0.2
+autostart = true
+
+[node name="GPUParticles2Ds" type="GPUParticles2D" parent="for_change_size"]
+material = ExtResource("6_e6ui1")
+position = Vector2(0, -13)
+amount = 20
+lifetime = 1.5
+process_material = SubResource("ParticleProcessMaterial_e6ui1")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_e3xsw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
 z_index = 200
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_uvqc1")
 animation = &"explosion"
-frame = 13
-frame_progress = 1.0
+frame = 5
+frame_progress = 0.8889187
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+color = Color(0.9764706, 0.8784314, 0.21960784, 1)
+energy = 0.0
+texture = ExtResource("5_dory6")
+texture_scale = 0.67
+
+[node name="spwon_effect" type="GPUParticles2D" parent="."]
+material = ExtResource("6_e6ui1")
+position = Vector2(0, 0.833336)
+emitting = false
+amount = 250
+texture = ExtResource("4_00ux7")
+lifetime = 3.0
+one_shot = true
+speed_scale = 5.0
+explosiveness = 1.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_u8ulu")
 
 [node name="hit_arae" type="Area2D" parent="."]
 collision_layer = 4
@@ -177,6 +244,12 @@ collision_mask = 13
 position = Vector2(4, -3)
 shape = SubResource("RectangleShape2D_gpm6j")
 
+[node name="Explosion312361" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-33, 12)
+stream = ExtResource("8_rjdfd")
+volume_db = 3.5
+
 [connection signal="timeout" from="for_change_size/timer/Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="for_change_size/timer/light_effect_timer" to="." method="_on_light_effect_timer_timeout"]
 [connection signal="body_entered" from="hit_arae" to="." method="_on_hit_arae_body_entered"]
 [connection signal="body_exited" from="hit_arae" to="." method="_on_hit_arae_body_exited"]

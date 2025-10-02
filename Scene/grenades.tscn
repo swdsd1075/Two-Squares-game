@@ -1,9 +1,12 @@
-[gd_scene load_steps=19 format=3 uid="uid://cd1jhrtyvx4db"]
+[gd_scene load_steps=22 format=3 uid="uid://cd1jhrtyvx4db"]
 
 [ext_resource type="Script" uid="uid://df7xlnby53w8a" path="res://Scripts/grenades.gd" id="1_m1nw5"]
 [ext_resource type="Texture2D" uid="uid://sq2lh7kll6mk" path="res://gra/game Player anim/Player_2/player_2_grenade.png" id="2_kcnk1"]
-[ext_resource type="Texture2D" uid="uid://c3wnpi3ono8qo" path="res://gra/Player_1/paetcals_shap.png" id="3_2l5ry"]
+[ext_resource type="Texture2D" uid="uid://c3wnpi3ono8qo" path="res://gra/game Player anim/Player_1/paetcals_shap.png" id="3_2l5ry"]
+[ext_resource type="Material" uid="uid://cqcc5kswquwhb" path="res://gra/canves_items/player_1.tres" id="3_r1ei2"]
 [ext_resource type="Texture2D" uid="uid://cjwtr4gswea2f" path="res://gra/Explosions pack/explosion-1-a/spritesheet.png" id="4_2l5ry"]
+[ext_resource type="Texture2D" uid="uid://d1njb4delqp7a" path="res://gra/UI/circle.png" id="5_v80ko"]
+[ext_resource type="AudioStream" uid="uid://cucudnqwxop4e" path="res://Audios/item-collected-1-367087.mp3" id="7_fcc07"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_v80ko"]
 particle_flag_disable_z = true
@@ -133,9 +136,11 @@ script = ExtResource("1_m1nw5")
 texture = ExtResource("2_kcnk1")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = ExtResource("3_r1ei2")
 position = Vector2(0, -11)
 amount = 17
 texture = ExtResource("3_2l5ry")
+lifetime = 1.3
 process_material = SubResource("ParticleProcessMaterial_v80ko")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -148,6 +153,7 @@ libraries = {
 autoplay = "colur_change"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = ExtResource("3_r1ei2")
 rotation = -0.785398
 scale = Vector2(2.3, 2.3)
 sprite_frames = SubResource("SpriteFrames_v80ko")
@@ -158,6 +164,16 @@ frame_progress = 1.0
 [node name="visble_timer" type="Timer" parent="."]
 wait_time = 0.2
 one_shot = true
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0.83053225, 0.09370399, 0.03807258, 1)
+texture = ExtResource("5_v80ko")
+texture_scale = 0.1
+
+[node name="ItemCollected1367087" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-20.034697, 29.46278)
+stream = ExtResource("7_fcc07")
+volume_db = -3.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="visble_timer" to="." method="_on_visble_timer_timeout"]

@@ -1,0 +1,66 @@
+[gd_scene load_steps=11 format=3 uid="uid://ddoxrnqrajdus"]
+
+[ext_resource type="Script" uid="uid://0q0rv812ydjc" path="res://Scripts/latren.gd" id="1_7wypq"]
+[ext_resource type="Texture2D" uid="uid://v0qds3h5rtla" path="res://gra/latren-removebg-preview.png" id="2_de0iy"]
+[ext_resource type="Texture2D" uid="uid://d1njb4delqp7a" path="res://gra/UI/circle.png" id="3_fk1up"]
+[ext_resource type="Material" uid="uid://cqcc5kswquwhb" path="res://gra/canves_items/player_1.tres" id="4_hpoun"]
+[ext_resource type="Texture2D" uid="uid://c3wnpi3ono8qo" path="res://gra/game Player anim/Player_1/paetcals_shap.png" id="5_3r4ns"]
+
+[sub_resource type="Curve" id="Curve_3r4ns"]
+_data = [Vector2(0.07106599, 1), 0.0, 0.0, 0, 0, Vector2(0.4314721, 1), 0.0, 0.0, 0, 0, Vector2(0.8121828, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_avodx"]
+curve = SubResource("Curve_3r4ns")
+
+[sub_resource type="Curve" id="Curve_hpoun"]
+_limits = [-360.0, 360.0, 0.0, 1.0]
+_data = [Vector2(0, 39.39621), 0.0, 0.0, 0, 0, Vector2(1, 17.66034), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_3r4ns"]
+curve = SubResource("Curve_hpoun")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_avodx"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(10, 10, 1)
+angle_min = -720.0
+angle_max = 720.0
+angle_curve = SubResource("CurveTexture_3r4ns")
+gravity = Vector3(0, 15, 0)
+scale_min = 0.06
+scale_max = 0.099999994
+color = Color(0.75508225, 0.5246522, 0.023613138, 1)
+alpha_curve = SubResource("CurveTexture_avodx")
+
+[node name="latren" type="Node2D"]
+z_index = 7
+script = ExtResource("1_7wypq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 29.999998)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_de0iy")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(1, 38)
+color = Color(1, 1, 0, 1)
+shadow_enabled = true
+shadow_filter = 2
+texture = ExtResource("3_fk1up")
+texture_scale = 0.5
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.8
+autostart = true
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = ExtResource("4_hpoun")
+position = Vector2(0, 39)
+amount = 2
+texture = ExtResource("5_3r4ns")
+lifetime = 4.0
+process_material = SubResource("ParticleProcessMaterial_avodx")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

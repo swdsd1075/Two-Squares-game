@@ -1,6 +1,7 @@
 extends Area2D
 
 @export var grenads_count: int = 2
+signal enter
 
 # متغيرات الحركة لأعلى/أسفل
 @export var float_amplitude : float = 5.0 # أقصى مسافة يتحركها فوق/تحت
@@ -13,16 +14,24 @@ func _ready() -> void:
 	$GPUParticles2D.visible = false
 	start_y = position.y
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	# حركة لأعلى وأسفل فقط (بدون سقوط أولي)
 	position.y = start_y + sin(Time.get_ticks_msec() / 1000.0 * float_speed) * float_amplitude
 
+var entered : bool = false
 func _on_body_entered(body: Node2D) -> void:
+	if entered:return
 	body.grenades += grenads_count
 	if "check_player_1" in body:
 		Globels.player_score[0] += 3
 	elif "check_player_2" in body:
 		Globels.player_score[1] += 3
+	enter.emit()
+	$"../..".items_now -= 1
+	entered = true
+	$ItemCollected1367087.play()
+	visible = false
+	await get_tree().create_timer(0.5).timeout
 	queue_free()
 
 

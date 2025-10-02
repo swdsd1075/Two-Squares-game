@@ -9,7 +9,21 @@ func check_player_1():pass #Nothing here
 
 
 func _physics_process(delta):
-	if death_var:
+	#partcals and lights open or off
+	$PointLight2D2.visible = Globels.lights
+	$spwon_effect.visible = Globels.partcals
+	$GPUParticles2D.visible = Globels.partcals
+	$hit_partcals.visible = Globels.partcals
+	
+	
+	
+	if not Globels.start_play:return
+	#make the global health
+	if Globels.player_1_health > 100:
+		Globels.player_1_health = 100
+	elif Globels.player_2_health > 100:
+		Globels.player_2_health = 100
+	if death_var :
 		$GPUParticles2D.visible = false
 		$spwon_effect.visible = false
 	choice_player = 1
@@ -18,6 +32,9 @@ func _physics_process(delta):
 	if die:return
 	#globals var == local var 
 	#global_position = Globels.player_1_pos
+	
+	Globels.player_2_grenades = grenades
+	Globels.player_1_grenades = grenades
 	
 	#rocket
 	chase_the_marker()
@@ -45,39 +62,41 @@ func _physics_process(delta):
 	
 	if not is_on_floor() :#and Globels.player_1_gra_bool:
 		velocity.y += gravity * delta
+		$sounds/WalkingOnGrass363353.stop()
 		
 	var direction = Input.get_action_strength("right_player_1") - Input.get_action_strength("left_player_1")
-	if not attack_timer:
+
+	# الحركة فقط لو ما في هجوم
+	if not attack_timer and controls:
 		velocity.x = direction * speed
+		if direction != 0:
+			if not $sounds/WalkingOnGrass363353.playing:
+				$sounds/WalkingOnGrass363353.play()
+		else:
+			if $sounds/WalkingOnGrass363353.playing:
+				$sounds/WalkingOnGrass363353.stop()
+	else:
+		# وقت الهجوم وقف الحركة
+		velocity.x = 0
+		if $sounds/WalkingOnGrass363353.playing:
+			$sounds/WalkingOnGrass363353.stop()
 	#from chatgpt attack_1
 	if current_boost != 0:
 		velocity.x += current_boost * delta
 		current_boost = move_toward(current_boost, 0, attack_boost_friction * delta)
 
-	if not attack_timer and Input.is_action_just_pressed("Jump_player_1") and is_on_floor():
+	if not attack_timer and Input.is_action_just_pressed("Jump_player_1") and is_on_floor() and controls:
 		velocity.y = jump_force
+		$sounds/CollapsingInGrass101312Ao94e7v9.play()
+		slime_effect(0.6)
 			
 	#attack_2
 	if Input.is_action_just_pressed("attack_2_player_1") and not attack_2_timer and grenades > 0:
-		attack_2_timer = true
-		grenades -= 1
-		$timers/Attack_2_timer.start()
-		var grenade = grenade_scene.instantiate()
-		grenade.global_position = global_position
-		#for move the grenade
-		if $AnimatedSprite2D.flip_h:
-			grenade.linear_velocity = Vector2(-250, -70)
-			grenade.angular_velocity = -6.0
-		else:
-			grenade.linear_velocity = Vector2(250, -70)
-			grenade.angular_velocity = 6.0
+		attack_2()
 
 
-
-		$"../../projectiles".add_child(grenade)
 
 	move_and_slide()
-
 	if direction != 0 and not attack_timer:
 		$AnimatedSprite2D.play("Walk")
 	elif not attack_timer:
@@ -94,6 +113,7 @@ func _physics_process(delta):
 		$AnimatedSprite2D.flip_h = true
 
 	if not attack_timer and not hit_timer and Input.is_action_just_pressed("attack_player_1"):
+		controls = false
 		attack_timer = true
 		$timers/Attack_timer.start()
 		$AnimatedSprite2D.play("attack")
@@ -110,6 +130,7 @@ func _on_attack_area_body_exited(body: Node2D) -> void:
 func _on_attack_timer_timeout() -> void:
 	attack_timer = false
 	#attack boost
+	$sounds/FistFight192117.play()
 	if $AnimatedSprite2D.flip_h:
 		current_boost = -attack_boost
 	else:
@@ -121,6 +142,7 @@ func _on_attack_timer_timeout() -> void:
 
 func _on_hit_timer_timeout() -> void:
 	hit_timer = false
+	controls = true
 
 
 func _on_attack_2_timer_timeout() -> void:

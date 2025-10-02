@@ -1,61 +1,17 @@
-[gd_scene load_steps=18 format=3 uid="uid://5yxh0pn5nfpw"]
+[gd_scene load_steps=25 format=3 uid="uid://5yxh0pn5nfpw"]
 
 [ext_resource type="Script" uid="uid://cxnff4h6jta0c" path="res://Scripts/rocket_item.gd" id="1_shpm0"]
 [ext_resource type="Texture2D" uid="uid://ueuoxj2kc50p" path="res://gra/target_rocket/rocket_with_firing.png" id="2_shpm0"]
-[ext_resource type="Texture2D" uid="uid://c3wnpi3ono8qo" path="res://gra/Player_1/paetcals_shap.png" id="3_72qkj"]
-[ext_resource type="Texture2D" uid="uid://jemf8lxshbmy" path="res://gra/target_rocket/smoke_anmi-removebg-preview.png" id="3_75236"]
+[ext_resource type="Texture2D" uid="uid://c3wnpi3ono8qo" path="res://gra/game Player anim/Player_1/paetcals_shap.png" id="3_72qkj"]
+[ext_resource type="Texture2D" uid="uid://cjwtr4gswea2f" path="res://gra/Explosions pack/explosion-1-a/spritesheet.png" id="5_8wlc6"]
+[ext_resource type="Material" uid="uid://cqcc5kswquwhb" path="res://gra/canves_items/player_1.tres" id="5_72qkj"]
+[ext_resource type="Texture2D" uid="uid://d1njb4delqp7a" path="res://gra/UI/circle.png" id="5_h505h"]
+[ext_resource type="AudioStream" uid="uid://dltcxa861rilf" path="res://Audios/grenade-launcher-106342.mp3" id="7_8wlc6"]
+[ext_resource type="AudioStream" uid="uid://sxd11p1m4c7r" path="res://Audios/rocket-loop-99748.mp3" id="7_bc4q0"]
+[ext_resource type="AudioStream" uid="uid://ckqddlm82n18j" path="res://Audios/nuclear-explosion-386181.mp3" id="8_4lpo5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_elkkw"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_shpm0"]
-atlas = ExtResource("3_75236")
-region = Rect2(0, 0, 80, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_h505h"]
-atlas = ExtResource("3_75236")
-region = Rect2(80, 0, 80, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_72qkj"]
-atlas = ExtResource("3_75236")
-region = Rect2(160, 0, 80, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8wlc6"]
-atlas = ExtResource("3_75236")
-region = Rect2(240, 0, 80, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4lpo5"]
-atlas = ExtResource("3_75236")
-region = Rect2(0, 80, 80, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bc4q0"]
-atlas = ExtResource("3_75236")
-region = Rect2(80, 80, 80, 80)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_x6xkg"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_shpm0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_h505h")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_72qkj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8wlc6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4lpo5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bc4q0")
-}],
-"loop": true,
-"name": &"idle_effect",
-"speed": 7.0
-}]
+radius = 127.47547
 
 [sub_resource type="Curve" id="Curve_shpm0"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.0492611, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.101887), 0.0, 0.0, 0, 0]
@@ -84,10 +40,82 @@ color = Color(0.992157, 0.780392, 0.168627, 1)
 alpha_curve = SubResource("CurveTexture_d2ylu")
 emission_curve = SubResource("CurveTexture_d6v2w")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ay3n4"]
+atlas = ExtResource("5_8wlc6")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ra2it"]
+atlas = ExtResource("5_8wlc6")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_70xj4"]
+atlas = ExtResource("5_8wlc6")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_umigs"]
+atlas = ExtResource("5_8wlc6")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u55el"]
+atlas = ExtResource("5_8wlc6")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rxabi"]
+atlas = ExtResource("5_8wlc6")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fj0h5"]
+atlas = ExtResource("5_8wlc6")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t7pfl"]
+atlas = ExtResource("5_8wlc6")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x6xkg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ay3n4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ra2it")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_70xj4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_umigs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u55el")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rxabi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fj0h5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t7pfl")
+}],
+"loop": false,
+"name": &"visble_effect",
+"speed": 10.0
+}]
+
 [node name="rocket_item" type="Area2D"]
 scale = Vector2(0.2, 0.2)
 collision_layer = 4
 script = ExtResource("1_shpm0")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+z_index = -7
+scale = Vector2(0.99999994, 0.99999994)
+color = Color(1, 1, 0.14901961, 1)
+energy = 1.3
+texture = ExtResource("5_h505h")
+texture_scale = 0.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_elkkw")
@@ -96,21 +124,38 @@ shape = SubResource("CircleShape2D_elkkw")
 rotation = 5.34943
 texture = ExtResource("2_shpm0")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-visible = false
-position = Vector2(135, 90)
-scale = Vector2(1.8, 1.8)
-sprite_frames = SubResource("SpriteFrames_x6xkg")
-animation = &"idle_effect"
-autoplay = "idle_effect"
-frame_progress = 0.0436946
-
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-position = Vector2(100, 70)
-scale = Vector2(0.8, 0.8)
+material = ExtResource("5_72qkj")
+position = Vector2(99.99999, 69.99999)
+scale = Vector2(0.79999995, 0.79999995)
+emitting = false
 amount = 70
 texture = ExtResource("3_72qkj")
 lifetime = 0.7
 process_material = SubResource("ParticleProcessMaterial_72qkj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = ExtResource("5_72qkj")
+position = Vector2(0, -5)
+scale = Vector2(15, 15)
+sprite_frames = SubResource("SpriteFrames_x6xkg")
+animation = &"visble_effect"
+frame = 7
+frame_progress = 1.0
+
+[node name="sounds" type="Node2D" parent="."]
+
+[node name="RocketLoop99748" type="AudioStreamPlayer2D" parent="sounds"]
+scale = Vector2(0.99999994, 0.99999994)
+stream = ExtResource("7_bc4q0")
+
+[node name="GrenadeLauncher106342" type="AudioStreamPlayer2D" parent="sounds"]
+scale = Vector2(0.99999994, 0.99999994)
+stream = ExtResource("7_8wlc6")
+
+[node name="NuclearExplosion386181" type="AudioStreamPlayer2D" parent="sounds"]
+scale = Vector2(0.99999994, 0.99999994)
+stream = ExtResource("8_4lpo5")
+volume_db = 5.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

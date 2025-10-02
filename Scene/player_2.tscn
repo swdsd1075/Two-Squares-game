@@ -1,12 +1,16 @@
-[gd_scene load_steps=42 format=3 uid="uid://3r2d76qu2nf3"]
+[gd_scene load_steps=43 format=3 uid="uid://3r2d76qu2nf3"]
 
 [ext_resource type="PackedScene" uid="uid://1ct4yyftx7wk" path="res://Scene/player.tscn" id="1_33hlo"]
 [ext_resource type="Script" uid="uid://dfd6t0ucosjbq" path="res://Scripts/player_2.gd" id="2_ui1wf"]
 [ext_resource type="Texture2D" uid="uid://weaxm51ctkf4" path="res://gra/game Player anim/Player_2/Player_2_idle.png" id="3_ibvbp"]
-[ext_resource type="Texture2D" uid="uid://c3wnpi3ono8qo" path="res://gra/Player_1/paetcals_shap.png" id="3_xq1op"]
+[ext_resource type="Texture2D" uid="uid://c3wnpi3ono8qo" path="res://gra/game Player anim/Player_1/paetcals_shap.png" id="3_xq1op"]
 [ext_resource type="Texture2D" uid="uid://do8hgvgkyywbx" path="res://gra/game Player anim/Player_2/Player_2_walk.png" id="4_hl7oy"]
 [ext_resource type="Texture2D" uid="uid://b1vjntqviinuo" path="res://gra/game Player anim/Player_2/Player_2_attack_1.png" id="5_wbkh1"]
 [ext_resource type="Texture2D" uid="uid://bm435ccqkcvns" path="res://gra/game Player anim/Player_2/Player_2_die.png" id="6_yqmqq"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xq1op"]
+blend_mode = 4
+light_mode = 1
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xq1op"]
 particle_flag_rotate_y = true
@@ -15,6 +19,9 @@ emission_sphere_radius = 30.12
 gravity = Vector3(0, 0, 0)
 scale_min = 0.08
 scale_max = 0.13
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ibvbp"]
+size = Vector2(39, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hl7oy"]
 atlas = ExtResource("3_ibvbp")
@@ -191,7 +198,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack",
-"speed": 6.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -256,26 +263,21 @@ animations = [{
 "speed": 20.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ibvbp"]
-size = Vector2(39, 40)
-
 [node name="player_2" instance=ExtResource("1_33hlo")]
 scale = Vector2(1.2, 1.2)
 script = ExtResource("2_ui1wf")
-speed = 250
+item_speed_value = 300
 jump_force = -380
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." index="0"]
+visible = false
 modulate = Color(0.533333, 0.533333, 0.533333, 1)
+material = SubResource("CanvasItemMaterial_xq1op")
 position = Vector2(1, -3)
 amount = 20
 texture = ExtResource("3_xq1op")
 lifetime = 0.5
 process_material = SubResource("ParticleProcessMaterial_xq1op")
-
-[node name="AnimatedSprite2D" parent="." index="2"]
-sprite_frames = SubResource("SpriteFrames_ui1wf")
-animation = &"die"
 
 [node name="Attack_area" type="Area2D" parent="." index="3"]
 visible = false
@@ -283,11 +285,19 @@ visible = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attack_area" index="0"]
 shape = SubResource("RectangleShape2D_ibvbp")
 
-[node name="CollisionShape2D" parent="." index="4"]
+[node name="AnimatedSprite2D" parent="." index="4"]
+sprite_frames = SubResource("SpriteFrames_ui1wf")
+animation = &"Idle"
+
+[node name="CollisionShape2D" parent="." index="5"]
 visible = false
 
-[node name="VisibleOnScreenNotifier2D" parent="." index="5"]
+[node name="VisibleOnScreenNotifier2D" parent="." index="6"]
 visible = false
+
+[node name="PointLight2D2" parent="." index="11"]
+energy = 0.4
+texture_scale = 0.5
 
 [connection signal="body_entered" from="Attack_area" to="." method="_on_attack_area_body_entered"]
 [connection signal="body_exited" from="Attack_area" to="." method="_on_attack_area_body_exited"]

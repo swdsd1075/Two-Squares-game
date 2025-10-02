@@ -11,6 +11,7 @@ var target
 @export var float_amplitude : float = 5.0 # المسافة لأعلى/أسفل
 @export var float_speed : float = 2.0     # سرعة الحركة
 var start_y : float
+signal enter
 
 func _ready() -> void:
 	$AnimatedSprite2D.play("visble_effect")
@@ -19,12 +20,15 @@ func _ready() -> void:
 	$Timer.start()
 	start_y = position.y
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	# حركة لأعلى وأسفل فقط
 	position.y = start_y + sin(Time.get_ticks_msec() / 1000.0 * float_speed) * float_amplitude
+	$PointLight2D.visible = Globels.lights
+	$GPUParticles2D.visible = Globels.partcals
 
+var entered : bool = false
 func _on_body_entered(body: Node2D) -> void:
-	if not if_player_enter:
+	if not if_player_enter and not entered:
 		if "check_player_1" in body:
 			Globels.player_score[0] += 3
 			Globels.player_damage_propties[0] += damage
@@ -32,6 +36,9 @@ func _on_body_entered(body: Node2D) -> void:
 			Globels.player_score[1] += 3
 			Globels.player_damage_propties[1] += damage
 		$effect_timer.wait_time = time
+		entered = true
+		$ItemCollected1367087.play()
+		visible = false
 		if_player_enter = true
 		target = body
 		body.damege += damage
@@ -42,6 +49,7 @@ func _on_body_entered(body: Node2D) -> void:
 		visible = false
 
 func _on_effect_timer_timeout() -> void:
+	if not enter:return
 	player_not_damaging.emit()
 	if "check_player_1" in target:
 		Globels.player_damage_propties[0] -= damage
@@ -49,6 +57,8 @@ func _on_effect_timer_timeout() -> void:
 		Globels.player_damage_propties[1] -= damage
 	target.damege -= damage
 	target.grenade_damage -= damage
+	$"../..".items_now -= 1
+	enter.emit()
 	queue_free()
 
 

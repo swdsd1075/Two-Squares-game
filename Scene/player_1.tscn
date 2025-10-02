@@ -1,12 +1,16 @@
-[gd_scene load_steps=42 format=3 uid="uid://cln7hdithtj3a"]
+[gd_scene load_steps=43 format=3 uid="uid://cln7hdithtj3a"]
 
 [ext_resource type="PackedScene" uid="uid://1ct4yyftx7wk" path="res://Scene/player.tscn" id="1_nmpo6"]
 [ext_resource type="Script" uid="uid://bqrwqpxx5nby3" path="res://Scripts/player_1.gd" id="2_sqjsi"]
-[ext_resource type="Texture2D" uid="uid://dr1k0vljp6mex" path="res://gra/Player_1/Player_1_idle.png" id="3_fig2j"]
-[ext_resource type="Texture2D" uid="uid://cov5d8bi6bm3x" path="res://gra/Player_1/Player_1_walk.png" id="4_632wp"]
-[ext_resource type="Texture2D" uid="uid://d2af7qsohohl1" path="res://gra/Player_1/Player_1_attack_1.png" id="5_q8k12"]
-[ext_resource type="Texture2D" uid="uid://dkqmfa1l7mgln" path="res://gra/Player_1/Player_1_die.png" id="6_nbjyu"]
-[ext_resource type="Texture2D" uid="uid://c3wnpi3ono8qo" path="res://gra/Player_1/paetcals_shap.png" id="6_ygsma"]
+[ext_resource type="Texture2D" uid="uid://dr1k0vljp6mex" path="res://gra/game Player anim/Player_1/Player_1_idle.png" id="3_fig2j"]
+[ext_resource type="Texture2D" uid="uid://cov5d8bi6bm3x" path="res://gra/game Player anim/Player_1/Player_1_walk.png" id="4_632wp"]
+[ext_resource type="Texture2D" uid="uid://d2af7qsohohl1" path="res://gra/game Player anim/Player_1/Player_1_attack_1.png" id="5_q8k12"]
+[ext_resource type="Texture2D" uid="uid://dkqmfa1l7mgln" path="res://gra/game Player anim/Player_1/Player_1_die.png" id="6_nbjyu"]
+[ext_resource type="Texture2D" uid="uid://c3wnpi3ono8qo" path="res://gra/game Player anim/Player_1/paetcals_shap.png" id="6_ygsma"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ygsma"]
+blend_mode = 4
+light_mode = 1
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ygsma"]
 particle_flag_rotate_y = true
@@ -15,6 +19,9 @@ emission_sphere_radius = 30.12
 gravity = Vector3(0, 0, 0)
 scale_min = 0.08
 scale_max = 0.13
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q8k12"]
+size = Vector2(39, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ygsma"]
 atlas = ExtResource("3_fig2j")
@@ -191,7 +198,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack",
-"speed": 6.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -256,26 +263,20 @@ animations = [{
 "speed": 20.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_q8k12"]
-size = Vector2(39, 40)
-
 [node name="player_1" instance=ExtResource("1_nmpo6")]
 scale = Vector2(1.2, 1.2)
 script = ExtResource("2_sqjsi")
+item_speed_value = 300
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." index="0"]
+visible = false
 modulate = Color(0, 0, 0, 1)
+material = SubResource("CanvasItemMaterial_ygsma")
 position = Vector2(1, -3)
 amount = 20
 texture = ExtResource("6_ygsma")
 lifetime = 0.5
 process_material = SubResource("ParticleProcessMaterial_ygsma")
-
-[node name="AnimatedSprite2D" parent="." index="2"]
-sprite_frames = SubResource("SpriteFrames_8ou0g")
-animation = &"die"
-frame = 18
-frame_progress = 1.0
 
 [node name="Attack_area" type="Area2D" parent="." index="3"]
 visible = false
@@ -283,11 +284,22 @@ visible = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attack_area" index="0"]
 shape = SubResource("RectangleShape2D_q8k12")
 
-[node name="CollisionShape2D" parent="." index="4"]
+[node name="AnimatedSprite2D" parent="." index="4"]
+sprite_frames = SubResource("SpriteFrames_8ou0g")
+animation = &"Idle"
+
+[node name="CollisionShape2D" parent="." index="5"]
 visible = false
 
-[node name="VisibleOnScreenNotifier2D" parent="." index="5"]
+[node name="VisibleOnScreenNotifier2D" parent="." index="6"]
 visible = false
+
+[node name="PointLight2D2" parent="." index="11"]
+energy = 0.4
+texture_scale = 0.5
+
+[node name="WalkingOnGrass363353" parent="sounds" index="4"]
+parameters/looping = false
 
 [connection signal="body_entered" from="Attack_area" to="." method="_on_attack_area_body_entered"]
 [connection signal="body_exited" from="Attack_area" to="." method="_on_attack_area_body_exited"]

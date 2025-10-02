@@ -7,6 +7,7 @@ var if_player_enter = false
 signal player_speeding
 signal player_not_speeding
 var target
+signal enter
 
 # متغيرات الحركة لأعلى/أسفل
 @export var float_amplitude : float = 5.0 # أقصى مسافة يتحركها فوق/تحت
@@ -25,12 +26,17 @@ func _ready() -> void:
 	$GPUParticles2D.visible = false
 	start_y = position.y
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	# حركة لأعلى وأسفل بشكل دائم
 	if move_up_down: position.y = start_y + sin(Time.get_ticks_msec() / 1000.0 * float_speed) * float_amplitude
+	$PointLight2D.visible = Globels.lights
+	$GPUParticles2D.visible = Globels.partcals
+	
+var entered : bool = false
 
 func _on_body_entered(body: Node2D) -> void:
-	if not if_player_enter:
+	if not if_player_enter and not entered:
+		entered = true
 		$effect_timer.wait_time = time
 		if "check_player_1" in body:
 			Globels.player_speed_propties[0] += speed
@@ -38,6 +44,9 @@ func _on_body_entered(body: Node2D) -> void:
 		elif "check_player_2" in body:
 			Globels.player_speed_propties[1] += speed
 			Globels.player_score[1] += 3
+			entered = true
+		$ItemCollected1367087.play()
+		visible = false
 		if_player_enter = true
 		body.speed += speed
 		target = body
@@ -53,10 +62,11 @@ func _on_timer_timeout() -> void:
 		Globels.player_speed_propties[0] -= speed
 	elif "check_player_2" in target:
 		Globels.player_speed_propties[1] -= speed
+	enter.emit()
 	queue_free()
 
 
 func _on_visble_timer_timeout() -> void:
 	$Sprite2D.visible = true
-	$GPUParticles2D.visible = true
+	$GPUParticles2D.visible = Globels.partcals
 	move_up_down = true

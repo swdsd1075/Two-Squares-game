@@ -1,0 +1,123 @@
+[gd_scene load_steps=17 format=3 uid="uid://b4sjrj6fysmbw"]
+
+[ext_resource type="Script" uid="uid://cy1aacisyu76v" path="res://Scripts/coin.gd" id="1_e0oo1"]
+[ext_resource type="Texture2D" uid="uid://cmxf8iij72dxi" path="res://gra/kenney_assets/tilemap_packed.png" id="2_d5vwu"]
+[ext_resource type="Material" uid="uid://cqcc5kswquwhb" path="res://gra/canves_items/player_1.tres" id="3_xltff"]
+[ext_resource type="Texture2D" uid="uid://cjwtr4gswea2f" path="res://gra/Explosions pack/explosion-1-a/spritesheet.png" id="5_kc2m0"]
+[ext_resource type="AudioStream" uid="uid://by7n45hhxmw40" path="res://Audios/coin-257878.mp3" id="6_e0oo1"]
+[ext_resource type="Texture2D" uid="uid://d1njb4delqp7a" path="res://gra/UI/circle.png" id="6_wleb1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_km5yu"]
+size = Vector2(14, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tavro"]
+atlas = ExtResource("5_kc2m0")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7yw05"]
+atlas = ExtResource("5_kc2m0")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ky2b"]
+atlas = ExtResource("5_kc2m0")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6nkk5"]
+atlas = ExtResource("5_kc2m0")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4c4n"]
+atlas = ExtResource("5_kc2m0")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0umep"]
+atlas = ExtResource("5_kc2m0")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ayxfe"]
+atlas = ExtResource("5_kc2m0")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2gvd4"]
+atlas = ExtResource("5_kc2m0")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ghn10"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tavro")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7yw05")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ky2b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6nkk5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t4c4n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0umep")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ayxfe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2gvd4")
+}],
+"loop": false,
+"name": &"visble_effect",
+"speed": 10.0
+}]
+
+[node name="coin" type="Area2D"]
+scale = Vector2(2.7, 2.7)
+collision_layer = 4
+collision_mask = 5
+script = ExtResource("1_e0oo1")
+
+[node name="rotate_coin" type="Sprite2D" parent="."]
+texture = ExtResource("2_d5vwu")
+region_enabled = true
+region_rect = Rect2(221, 129, 8, 12)
+
+[node name="forward_coin" type="Sprite2D" parent="."]
+texture = ExtResource("2_d5vwu")
+region_enabled = true
+region_rect = Rect2(201, 129, 12, 12)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_km5yu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = ExtResource("3_xltff")
+position = Vector2(0.37037, 0)
+scale = Vector2(1.3, 1.3)
+sprite_frames = SubResource("SpriteFrames_ghn10")
+animation = &"visble_effect"
+frame = 7
+frame_progress = 1.0
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0.95686275, 0.7058824, 0.105882354, 1)
+energy = 1.37
+texture = ExtResource("6_wleb1")
+texture_scale = 0.05
+
+[node name="coin_anmi_timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="Coin257878" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(13.703703, 8.148148)
+stream = ExtResource("6_e0oo1")
+volume_db = 8.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="coin_anmi_timer" to="." method="_on_coin_anmi_timer_timeout"]

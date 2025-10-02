@@ -1,175 +1,161 @@
-[gd_scene load_steps=18 format=3 uid="uid://bl7f2y2oksxb0"]
+[gd_scene load_steps=37 format=3 uid="uid://bl7f2y2oksxb0"]
 
 [ext_resource type="Script" uid="uid://bwgk5vmh6jrfi" path="res://Scripts/ui.gd" id="1_3i1b0"]
 [ext_resource type="Texture2D" uid="uid://m8802j0y47nd" path="res://gra/kenney_assets/heart.png" id="2_bpjw8"]
 [ext_resource type="FontFile" uid="uid://dwumuhu4jd2uf" path="res://gra/fonts/Pixel Game.otf" id="2_lfpiq"]
-[ext_resource type="Texture2D" uid="uid://c7t8qnx1edglc" path="res://gra/Player_1/player_1_health_bar_border.png" id="2_thkpk"]
+[ext_resource type="Texture2D" uid="uid://c7t8qnx1edglc" path="res://gra/game Player anim/Player_1/player_1_health_bar_border.png" id="2_thkpk"]
 [ext_resource type="Texture2D" uid="uid://ccjtxqy08svx7" path="res://gra/SIMPLE HEALTHBAR/RED HEALTHBAR/PNG/56.png" id="3_thkpk"]
-[ext_resource type="Texture2D" uid="uid://bui6i8qxlasfb" path="res://gra/Player_1/player_1_grenade.png" id="6_thkpk"]
+[ext_resource type="Texture2D" uid="uid://bui6i8qxlasfb" path="res://gra/game Player anim/Player_1/player_1_grenade.png" id="6_thkpk"]
 [ext_resource type="Texture2D" uid="uid://clv527fu0kx0c" path="res://gra/game Player anim/Player_2/player_2_health_bar_border.png" id="7_mqc2b"]
 [ext_resource type="Texture2D" uid="uid://sq2lh7kll6mk" path="res://gra/game Player anim/Player_2/player_2_grenade.png" id="8_bft37"]
 [ext_resource type="Texture2D" uid="uid://dgr63ro5s0br1" path="res://gra/UI/stick.png" id="9_bft37"]
 [ext_resource type="Texture2D" uid="uid://bm3rf4e6sepn0" path="res://gra/UI/UI space.png" id="10_d0mn4"]
-[ext_resource type="Texture2D" uid="uid://c3xbdaf1l2wjf" path="res://gra/Player_1/player_1_image.png" id="11_p1i6o"]
+[ext_resource type="Texture2D" uid="uid://c3xbdaf1l2wjf" path="res://gra/game Player anim/Player_1/player_1_image.png" id="11_p1i6o"]
 [ext_resource type="Texture2D" uid="uid://bvtkakprfr206" path="res://gra/game Player anim/Player_2/player_2_image.png" id="12_vacr6"]
+[ext_resource type="Texture2D" uid="uid://cqveawkvcakqi" path="res://gra/UI/نفس اللوح الخشبي بأس-Photoroom.png" id="13_l3tci"]
+[ext_resource type="Texture2D" uid="uid://cta8dg6rkohkh" path="res://gra/UI/quit button.png" id="14_rd0yu"]
+[ext_resource type="Texture2D" uid="uid://dh0cnprs4ylvs" path="res://gra/UI/quit_button_pressed.png" id="15_wsdcc"]
+[ext_resource type="Texture2D" uid="uid://blhlefs383n8a" path="res://gra/UI/start_button.png" id="16_466ek"]
+[ext_resource type="Texture2D" uid="uid://cs4febqjigoi6" path="res://gra/UI/resturt_button.png" id="17_3flpx"]
+[ext_resource type="Texture2D" uid="uid://deva1n0r6kd3f" path="res://gra/UI/start_button_pressed.png" id="17_jee1r"]
+[ext_resource type="Texture2D" uid="uid://ssqp7f4rbqsl" path="res://gra/UI/resturt_button_pressed_2.png" id="19_7lmrb"]
+[ext_resource type="Texture2D" uid="uid://cseiwftxl7hkx" path="res://gra/UI/quit_button_to_main.png" id="19_x1q7n"]
+[ext_resource type="Texture2D" uid="uid://bp5finf4pjtcs" path="res://gra/UI/quit_button_to_main_pressed.png" id="22_cg7m8"]
+[ext_resource type="AudioStream" uid="uid://c2p4p8e85whoj" path="res://Audios/button-press-382713.mp3" id="22_jee1r"]
+[ext_resource type="AudioStream" uid="uid://cwq2em306uxvn" path="res://Audios/wood-friction-1-49666-leblnxma_z6zV1sSH.mp3" id="23_7lmrb"]
+[ext_resource type="AudioStream" uid="uid://hrrt6ol6ewks" path="res://Audios/winner-game-sound-404167.mp3" id="24_cg7m8"]
+[ext_resource type="AudioStream" uid="uid://b708wttghtn0l" path="res://Audios/game-start-317318.mp3" id="25_sgjqw"]
+[ext_resource type="AudioStream" uid="uid://cdbv58fvvybrn" path="res://Audios/game-loading-sound-effect-380367.mp3" id="26_ax0r5"]
+[ext_resource type="AudioStream" uid="uid://c6a1iovcuk8jv" path="res://Audios/10sec-digital-countdown-sfx-319873.mp3" id="27_kfs54"]
 
 [sub_resource type="Animation" id="Animation_bft37"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:color")
+tracks/0/path = NodePath("ColorRect2:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Color(0, 0, 0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("win_player/VBoxContainer/Label:modulate")
+tracks/1/path = NodePath("ColorRect2:z_index")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
+"update": 1,
+"values": [1000]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("win_player/HBoxContainer/VBoxContainer2/VBoxContainer2/NinePatchRect:custom_minimum_size")
+tracks/2/path = NodePath("sounds/WoodFriction149666LeblnxmaZ6zV1sSh:playing")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(345, 480)]
+"update": 1,
+"values": [false]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("win_player/HBoxContainer/VBoxContainer/VBoxContainer2/NinePatchRect:custom_minimum_size")
+tracks/3/path = NodePath("sounds/WinnerGameSound404167:playing")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(345, 480)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("win_player/HBoxContainer/VBoxContainer/TextureRect:modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("win_player/HBoxContainer/VBoxContainer2/TextureRect:modulate")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("win_player/HBoxContainer/VBoxContainer2/VBoxContainer2/NinePatchRect/VBoxContainer:modulate")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("win_player/HBoxContainer/VBoxContainer/VBoxContainer2/NinePatchRect/VBoxContainer:modulate")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("win_player/HBoxContainer/VBoxContainer2/VBoxContainer2/NinePatchRect:visible")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("win_player/HBoxContainer/VBoxContainer/VBoxContainer2/NinePatchRect:visible")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
 }
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("win_player/MarginContainer:visible")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("win_player/MarginContainer:modulate")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+
+[sub_resource type="Animation" id="Animation_l3tci"]
+resource_name = "esc_menu_anmi"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("esc_menu:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6333333),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0)]
+"values": [Vector2(0, -600), Vector2(0, 0)]
 }
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("win_player:visible")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
-"times": PackedFloat32Array(0),
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.76),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.39607844)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("esc_menu/quit_button:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.6166667, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("sounds/WoodFriction149666LeblnxmaZ6zV1sSh:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.33333334),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_7lmrb"]
+resource_name = "fade_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect2:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.033333335, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect2:z_index")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1000]
 }
 
 [sub_resource type="Animation" id="Animation_mqc2b"]
@@ -182,10 +168,38 @@ tracks/0/path = NodePath("ColorRect:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.133333, 1.13333),
+"times": PackedFloat32Array(0, 0.36666667, 1.13333),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(0.752941, 0, 0.12549, 0.462745), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ax0r5"]
+resource_name = "main_to_sitting"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("esc_menu:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.03333333, 0.36666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("esc_menu:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.36666667, 0.6666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1152, 648), Vector2(8000, 648)]
 }
 
 [sub_resource type="Animation" id="Animation_vacr6"]
@@ -202,6 +216,22 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_x1q7n"]
+resource_name = "time_anmi"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("end_timer/Label:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.79607844, 0.9411765, 0, 1), Color(0.79607844, 0, 0, 1), Color(0.79607844, 0.9411765, 0, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_d0mn4"]
@@ -368,12 +398,28 @@ tracks/12/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("sounds/WinnerGameSound404167:playing")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(2.1271222),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_d0mn4"]
 _data = {
 &"RESET": SubResource("Animation_bft37"),
+&"esc_menu_anmi": SubResource("Animation_l3tci"),
+&"fade_in": SubResource("Animation_7lmrb"),
 &"heart_negtive": SubResource("Animation_mqc2b"),
+&"main_to_sitting": SubResource("Animation_ax0r5"),
 &"skip_anmi": SubResource("Animation_vacr6"),
+&"time_anmi": SubResource("Animation_x1q7n"),
 &"win_player": SubResource("Animation_d0mn4")
 }
 
@@ -387,6 +433,7 @@ anchor_right = 1.0
 offset_left = -40.0
 offset_bottom = 40.0
 grow_horizontal = 0
+mouse_filter = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="player_1"]
 custom_minimum_size = Vector2(100, 100)
@@ -454,6 +501,7 @@ texture = ExtResource("6_thkpk")
 [node name="player_2" type="MarginContainer" parent="."]
 offset_right = 288.0
 offset_bottom = 264.0
+mouse_filter = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="player_2"]
 custom_minimum_size = Vector2(100, 100)
@@ -525,10 +573,22 @@ wait_time = 2.6
 one_shot = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
+z_index = 3
 offset_left = -2860.0
 offset_top = -1653.0
 offset_right = 3540.0
 offset_bottom = 2466.0
+mouse_filter = 2
+color = Color(1, 1, 1, 0)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+z_index = 1000
+offset_left = -2860.0
+offset_top = -1653.0
+offset_right = 3540.0
+offset_bottom = 2466.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -536,6 +596,7 @@ libraries = {
 }
 
 [node name="win_player" type="MarginContainer" parent="."]
+z_index = 5
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -543,6 +604,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="win_player"]
 layout_mode = 2
@@ -569,6 +631,7 @@ size_flags_vertical = 0
 theme_override_constants/separation = -23
 
 [node name="TextureRect" type="TextureRect" parent="win_player/HBoxContainer/VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(400, 90)
 layout_mode = 2
 texture = ExtResource("9_bft37")
@@ -582,8 +645,7 @@ size_flags_vertical = 0
 theme_override_constants/separation = -2
 
 [node name="NinePatchRect" type="NinePatchRect" parent="win_player/HBoxContainer/VBoxContainer/VBoxContainer2"]
-visible = false
-custom_minimum_size = Vector2(345, 480)
+custom_minimum_size = Vector2(345, 0)
 layout_mode = 2
 texture = ExtResource("10_d0mn4")
 patch_margin_left = 2
@@ -592,6 +654,7 @@ patch_margin_right = 2
 patch_margin_bottom = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="win_player/HBoxContainer/VBoxContainer/VBoxContainer2/NinePatchRect"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -706,6 +769,7 @@ size_flags_vertical = 0
 theme_override_constants/separation = -23
 
 [node name="TextureRect" type="TextureRect" parent="win_player/HBoxContainer/VBoxContainer2"]
+modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(400, 90)
 layout_mode = 2
 texture = ExtResource("9_bft37")
@@ -719,7 +783,7 @@ size_flags_vertical = 0
 theme_override_constants/separation = -2
 
 [node name="NinePatchRect" type="NinePatchRect" parent="win_player/HBoxContainer/VBoxContainer2/VBoxContainer2"]
-custom_minimum_size = Vector2(345, 480)
+custom_minimum_size = Vector2(345, 0)
 layout_mode = 2
 texture = ExtResource("10_d0mn4")
 patch_margin_left = 2
@@ -728,6 +792,7 @@ patch_margin_right = 2
 patch_margin_bottom = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="win_player/HBoxContainer/VBoxContainer2/VBoxContainer2/NinePatchRect"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -836,6 +901,7 @@ theme_override_font_sizes/font_size = 70
 text = "1367"
 
 [node name="MarginContainer" type="MarginContainer" parent="win_player"]
+visible = false
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme_override_constants/margin_top = 0
@@ -854,8 +920,10 @@ text = "click (k) to skip"
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -0.0078125
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Label" type="Label" parent="start_effect"]
 modulate = Color(1, 1, 1, 0)
@@ -868,6 +936,7 @@ text = "start"
 
 [node name="Label2" type="Label" parent="start_effect"]
 modulate = Color(1, 1, 1, 0)
+z_index = 10
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -875,5 +944,194 @@ theme_override_fonts/font = ExtResource("2_lfpiq")
 theme_override_font_sizes/font_size = 199
 text = "loading..."
 
+[node name="esc_menu" type="Control" parent="."]
+modulate = Color(1, 1, 1, 0.9166667)
+z_index = 8
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -600.0
+offset_bottom = -600.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="quit_button" type="MarginContainer" parent="esc_menu"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+offset_right = 200.0
+theme_override_constants/margin_left = -18
+theme_override_constants/margin_top = -33
+theme_override_constants/margin_right = 0
+
+[node name="TextureButton" type="TextureButton" parent="esc_menu/quit_button"]
+custom_minimum_size = Vector2(180, 180)
+layout_mode = 2
+texture_normal = ExtResource("14_rd0yu")
+texture_pressed = ExtResource("15_wsdcc")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="MarginContainer2" type="MarginContainer" parent="esc_menu/quit_button/TextureButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -62.0
+offset_top = -51.0
+offset_right = 62.0
+offset_bottom = 51.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 59
+
+[node name="Label" type="Label" parent="esc_menu/quit_button/TextureButton/MarginContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.17194855, 0.6827422, 0.2398226, 1)
+theme_override_fonts/font = ExtResource("2_lfpiq")
+theme_override_font_sizes/font_size = 48
+text = "return"
+
+[node name="MarginContainer" type="MarginContainer" parent="esc_menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -390.0
+offset_right = 300.0
+offset_bottom = 390.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_bottom = -120
+
+[node name="TextureRect" type="TextureRect" parent="esc_menu/MarginContainer"]
+custom_minimum_size = Vector2(600, 1000)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("13_l3tci")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="esc_menu/MarginContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -103.0
+offset_top = -192.0
+offset_right = 103.0
+offset_bottom = 192.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = -5
+theme_override_constants/margin_bottom = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="esc_menu/MarginContainer/TextureRect/MarginContainer"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="start" type="MarginContainer" parent="esc_menu/MarginContainer/TextureRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_right = 16
+
+[node name="TextureButton" type="TextureButton" parent="esc_menu/MarginContainer/TextureRect/MarginContainer/VBoxContainer/start"]
+custom_minimum_size = Vector2(191, 86)
+layout_mode = 2
+texture_normal = ExtResource("16_466ek")
+texture_pressed = ExtResource("17_jee1r")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="resturt" type="MarginContainer" parent="esc_menu/MarginContainer/TextureRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_right = 16
+
+[node name="TextureButton" type="TextureButton" parent="esc_menu/MarginContainer/TextureRect/MarginContainer/VBoxContainer/resturt"]
+custom_minimum_size = Vector2(191, 86)
+layout_mode = 2
+texture_normal = ExtResource("17_3flpx")
+texture_pressed = ExtResource("19_7lmrb")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="quit" type="MarginContainer" parent="esc_menu/MarginContainer/TextureRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_right = 16
+
+[node name="TextureButton" type="TextureButton" parent="esc_menu/MarginContainer/TextureRect/MarginContainer/VBoxContainer/quit"]
+custom_minimum_size = Vector2(191, 86)
+layout_mode = 2
+texture_normal = ExtResource("19_x1q7n")
+texture_pressed = ExtResource("22_cg7m8")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="win_skip_timer" type="Timer" parent="."]
+
+[node name="end_timer" type="MarginContainer" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -69.0
+offset_top = -80.0
+offset_right = 68.0
+offset_bottom = 22.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="end_timer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.79607844, 0.9411765, 0, 1)
+theme_override_fonts/font = ExtResource("2_lfpiq")
+theme_override_font_sizes/font_size = 100
+text = "1:25"
+
+[node name="game_timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="change_time_text" type="Timer" parent="."]
+
+[node name="sounds" type="Node2D" parent="."]
+
+[node name="GameLoadingSoundEffect380367" type="AudioStreamPlayer2D" parent="sounds"]
+position = Vector2(37, 367)
+stream = ExtResource("26_ax0r5")
+volume_db = -8.4
+parameters/looping = true
+
+[node name="ButtonPress382713" type="AudioStreamPlayer2D" parent="sounds"]
+stream = ExtResource("22_jee1r")
+
+[node name="WoodFriction149666LeblnxmaZ6zV1sSh" type="AudioStreamPlayer2D" parent="sounds"]
+stream = ExtResource("23_7lmrb")
+
+[node name="WinnerGameSound404167" type="AudioStreamPlayer2D" parent="sounds"]
+stream = ExtResource("24_cg7m8")
+
+[node name="GameStart317318" type="AudioStreamPlayer2D" parent="sounds"]
+stream = ExtResource("25_sgjqw")
+
+[node name="10SecDigitalCountdownSfx319873" type="AudioStreamPlayer2D" parent="sounds"]
+position = Vector2(-12, -5)
+stream = ExtResource("27_kfs54")
+volume_db = -1.0
+
 [connection signal="timeout" from="effect_timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="effect_time_timer" to="." method="_on_effect_time_timer_timeout"]
+[connection signal="pressed" from="esc_menu/quit_button/TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="esc_menu/MarginContainer/TextureRect/MarginContainer/VBoxContainer/start/TextureButton" to="." method="_on_texture_start_button_pressed"]
+[connection signal="pressed" from="esc_menu/MarginContainer/TextureRect/MarginContainer/VBoxContainer/resturt/TextureButton" to="." method="_on_texture_resturt_button_pressed"]
+[connection signal="pressed" from="esc_menu/MarginContainer/TextureRect/MarginContainer/VBoxContainer/quit/TextureButton" to="." method="_on_texture_quit_button_pressed"]
+[connection signal="timeout" from="win_skip_timer" to="." method="_on_win_skip_timer_timeout"]
+[connection signal="timeout" from="game_timer" to="." method="_on_game_timer_timeout"]
+[connection signal="timeout" from="change_time_text" to="." method="_on_change_time_text_timeout"]

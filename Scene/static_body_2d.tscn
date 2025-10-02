@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://vwkgm3d1vg1i"]
+[gd_scene load_steps=7 format=3 uid="uid://vwkgm3d1vg1i"]
 
 [ext_resource type="Script" uid="uid://b8vkpr7d7m3s1" path="res://Scripts/static_body_2d.gd" id="1_mphq1"]
 [ext_resource type="Texture2D" uid="uid://cmxf8iij72dxi" path="res://gra/kenney_assets/tilemap_packed.png" id="2_rviwl"]
+[ext_resource type="Texture2D" uid="uid://d1njb4delqp7a" path="res://gra/UI/circle.png" id="3_pie07"]
+[ext_resource type="AudioStream" uid="uid://bxb7osmd5d24o" path="res://Audios/cartoon-jump-6462.mp3" id="4_810h6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mphq1"]
 size = Vector2(20, 10)
@@ -35,6 +37,17 @@ position = Vector2(0, -2)
 texture = ExtResource("2_rviwl")
 region_enabled = true
 region_rect = Rect2(144, 94, 18, 14)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0.49411765, 0.19215687, 0.14509805, 1)
+energy = 1.5
+texture = ExtResource("3_pie07")
+texture_scale = 0.05
+
+[node name="CartoonJump6462" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, -0.41666666)
+stream = ExtResource("4_810h6")
+volume_db = -2.0
 
 [connection signal="body_entered" from="player_enetr_area" to="." method="_on_player_enetr_area_body_entered"]
 [connection signal="body_exited" from="player_enetr_area" to="." method="_on_player_enetr_area_body_exited"]
