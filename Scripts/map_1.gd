@@ -81,12 +81,11 @@ func _process(delta):
 			$Players/kill_effect.emitting = true
 			if $Players/player_1.die_effect:$Players/kill_effect.position = $Players/player_1.the_last_pos
 			elif $Players/player_2.die_effect:$Players/kill_effect.position = $Players/player_2.the_last_pos
-	return
 	if player_1 and player_2:
 		# ✅ مركز الكاميرا = منتصف اللاعبين
 		var center_position = (player_1.global_position + player_2.global_position) / 2.0
 		camera.global_position = camera.global_position.lerp(center_position, 0.1)
-
+		#print("s")
 		# ✅ حساب المسافة بين اللاعبين
 		var distance = player_1.global_position.distance_to(player_2.global_position)
 		# ✅ نسبة الزوم بناءً على المسافة

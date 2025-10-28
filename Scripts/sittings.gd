@@ -179,6 +179,7 @@ func _on_controls_pressed() -> void:
 	$sounds/ButtonPress382713.play()
 	controls_on_off = true
 	$sittings/the_sittings/controls.position = Vector2(295,103.5)
+	
 	#open the controls
 	var tween = create_tween()
 	tween.tween_property($sittings/the_sittings/MarginContainer,"modulate",Color(1.0, 1.0, 1.0, 0.0),0.4)

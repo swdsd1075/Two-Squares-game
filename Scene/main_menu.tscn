@@ -1,4 +1,4 @@
-[gd_scene load_steps=131 format=4 uid="uid://d0tjdjmu6acp2"]
+[gd_scene load_steps=136 format=4 uid="uid://d0tjdjmu6acp2"]
 
 [ext_resource type="Script" uid="uid://ep1h87uxaqb4" path="res://Scripts/main_menu.gd" id="1_ftydy"]
 [ext_resource type="Texture2D" uid="uid://ctdkp2ckvlbjh" path="res://gra/kenney_assets/tilemap-backgrounds_packed.png" id="2_hptlk"]
@@ -23,11 +23,15 @@
 [ext_resource type="Texture2D" uid="uid://bm3rf4e6sepn0" path="res://gra/UI/UI space.png" id="19_hjh75"]
 [ext_resource type="PackedScene" uid="uid://dk5f1vreukxjk" path="res://Scene/sittings.tscn" id="23_rmux6"]
 [ext_resource type="Texture2D" uid="uid://bu6rupwa3l0rc" path="res://gra/UI/text_logo.png" id="24_baltx"]
+[ext_resource type="Texture2D" uid="uid://c3xbdaf1l2wjf" path="res://gra/game Player anim/Player_1/player_1_image.png" id="26_n8ygb"]
 [ext_resource type="Material" uid="uid://cqcc5kswquwhb" path="res://gra/canves_items/player_1.tres" id="27_8ucve"]
+[ext_resource type="Texture2D" uid="uid://bvtkakprfr206" path="res://gra/game Player anim/Player_2/player_2_image.png" id="27_hyiqk"]
 [ext_resource type="Texture2D" uid="uid://bgvru5ohugugn" path="res://gra/UI/small_wood.png" id="28_baltx"]
 [ext_resource type="AudioStream" uid="uid://c2p4p8e85whoj" path="res://Audios/button-press-382713.mp3" id="29_n8ygb"]
 [ext_resource type="AudioStream" uid="uid://cwq2em306uxvn" path="res://Audios/wood-friction-1-49666-leblnxma_z6zV1sSH.mp3" id="30_hyiqk"]
 [ext_resource type="AudioStream" uid="uid://b708wttghtn0l" path="res://Audios/game-start-317318.mp3" id="31_klft3"]
+[ext_resource type="AudioStream" uid="uid://bb8uudod8wc36" path="res://Audios/slow-cinematic-clock-ticking-357979_nXuLCgoO.mp3" id="31_x1jkm"]
+[ext_resource type="AudioStream" uid="uid://hrrt6ol6ewks" path="res://Audios/winner-game-sound-404167.mp3" id="32_x1jkm"]
 
 [sub_resource type="Curve" id="Curve_50pke"]
 _limits = [-360.0, 360.0, 0.0, 1.0]
@@ -953,7 +957,7 @@ color = Color(0.988235, 0.407843, 0.231373, 1)
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/sittings:position")
+tracks/0/path = NodePath("CanvasLayer/main_menu:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -961,54 +965,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/main_menu/game logo:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CanvasLayer/main_menu/ver_text:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("sounds/WoodFriction149666LeblnxmaZ6zV1sSh:playing")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("sounds/GameStart317318:playing")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_rmux6"]
@@ -1061,6 +1017,18 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(5663465, 0), Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/player win:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.36666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_fqtvk"]
@@ -1126,6 +1094,18 @@ tracks/4/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CanvasLayer/player win:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1, 1.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_p1wrw"]
 resource_name = "tp_effect"
@@ -1143,12 +1123,211 @@ tracks/0/keys = {
 "values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0.262745, 0.262745, 0.262745, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_hyiqk"]
+resource_name = "win_anmi"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/black_color:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 9.666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/black_color:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.46666667, 9.233333, 9.666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(0, 0.70980394, 0.18039216, 0.47843137), Color(0, 0.70980394, 0.18039216, 0.47843137), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/main_menu:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/main_menu:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.0333333, 0.47, 8.633332, 9.466666),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/win 3 rounds:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.33333334, 8.433332),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CanvasLayer/win 3 rounds:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.33333334, 0.76666665, 7.2666664, 8.166666),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CanvasLayer/win 3 rounds/HBoxContainer2/Label:text")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.1, 1.06, 1.0666667, 7.8999996),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": ["wins:2/3", "wins:3/3", "wins:3/3", "wins:2/3"]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CanvasLayer/win 3 rounds/HBoxContainer/Label:text")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.1, 1.06, 7.8999996),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": ["wins:2/3", "wins:3/3", "wins:2/3"]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("sounds/SlowCinematicClockTicking357979NXuLCgoO:playing")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("CanvasLayer/win 3 rounds/HBoxContainer2:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(1.8866667, 2.3333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("CanvasLayer/win 3 rounds/HBoxContainer:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(1.9333333, 2.3166666),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("CanvasLayer/win 3 rounds/Label:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(2.54),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("CanvasLayer/win 3 rounds/Label:modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(2.6333334, 3.2, 7.133333, 7.733333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("sounds/WinnerGameSound404167:playing")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/14/type = "method"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath(".")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(6.7),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"reset"
+}]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("CanvasLayer/win 3 rounds:position")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0.0742789, 9.681017),
+"transitions": PackedFloat32Array(315.173, 2998.452),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1500, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_34sut"]
 _data = {
 &"RESET": SubResource("Animation_34sut"),
 &"sittings_to_main": SubResource("Animation_rmux6"),
 &"start_anmi": SubResource("Animation_fqtvk"),
-&"tp_effect": SubResource("Animation_p1wrw")
+&"tp_effect": SubResource("Animation_p1wrw"),
+&"win_anmi": SubResource("Animation_hyiqk")
 }
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_baltx"]
@@ -1290,13 +1469,15 @@ libraries = {
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="black_color" type="ColorRect" parent="CanvasLayer"]
-visible = false
+modulate = Color(1, 1, 1, 0)
 z_index = -9
 offset_right = 2081.0
 offset_bottom = 1133.0
 
 [node name="sittings" parent="CanvasLayer" instance=ExtResource("23_rmux6")]
 modulate = Color(1, 1, 1, 0)
+offset_left = 5663465.0
+offset_right = 5663465.0
 
 [node name="play_menu" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -1430,9 +1611,10 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 0.0007324219
+offset_right = 0.0024414063
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_lock_ = true
 
 [node name="button" type="MarginContainer" parent="CanvasLayer/main_menu"]
 z_index = 3
@@ -1595,6 +1777,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="game logo" type="MarginContainer" parent="CanvasLayer/main_menu"]
+modulate = Color(1, 1, 1, 0)
 z_index = -3
 layout_mode = 1
 anchors_preset = 1
@@ -1612,6 +1795,7 @@ texture = ExtResource("24_baltx")
 expand_mode = 1
 
 [node name="ver_text" type="MarginContainer" parent="CanvasLayer/main_menu"]
+modulate = Color(1, 1, 1, 0)
 z_index = 3
 layout_mode = 1
 anchors_preset = 3
@@ -1631,7 +1815,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(4.66868e-06, 0.631061, 0, 1)
 theme_override_fonts/font = ExtResource("3_hii65")
 theme_override_font_sizes/font_size = 45
-text = "ver 1.0.0"
+text = "ver 1.0.4"
 
 [node name="quit_screen" type="MarginContainer" parent="CanvasLayer"]
 z_index = 4096
@@ -1642,6 +1826,7 @@ offset_bottom = 4220.0
 scale = Vector2(5, 5)
 theme_override_constants/margin_left = 50
 theme_override_constants/margin_top = -170
+metadata/_edit_lock_ = true
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/quit_screen"]
 custom_minimum_size = Vector2(140, 220)
@@ -1780,6 +1965,115 @@ color = Color(0, 0, 0, 0)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="CanvasLayer"]
 
+[node name="player win" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -230.0
+offset_top = -124.0
+offset_right = 230.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 250
+
+[node name="VBoxContainer" type="HBoxContainer" parent="CanvasLayer/player win"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/player win/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/player win/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture = ExtResource("26_n8ygb")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/player win/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.922335, 0.9223345, 0, 1)
+theme_override_fonts/font = ExtResource("3_hii65")
+theme_override_font_sizes/font_size = 45
+text = "wins:0/3"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/player win/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/player win/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture = ExtResource("27_hyiqk")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/player win/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.922335, 0.9223345, 0, 1)
+theme_override_fonts/font = ExtResource("3_hii65")
+theme_override_font_sizes/font_size = 45
+text = "wins:0/3"
+
+[node name="win 3 rounds" type="MarginContainer" parent="CanvasLayer"]
+z_index = 100
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1500.0
+offset_right = 1500.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/win 3 rounds"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/win 3 rounds/HBoxContainer2"]
+custom_minimum_size = Vector2(100, 60)
+layout_mode = 2
+texture = ExtResource("27_hyiqk")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/win 3 rounds/HBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.922335, 0.9223345, 0, 1)
+theme_override_fonts/font = ExtResource("3_hii65")
+theme_override_font_sizes/font_size = 100
+text = "wins:2/3"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/win 3 rounds"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/win 3 rounds/HBoxContainer"]
+custom_minimum_size = Vector2(100, 60)
+layout_mode = 2
+texture = ExtResource("26_n8ygb")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/win 3 rounds/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.922335, 0.9223345, 0, 1)
+theme_override_fonts/font = ExtResource("3_hii65")
+theme_override_font_sizes/font_size = 100
+text = "wins:2/3"
+
+[node name="Label" type="Label" parent="CanvasLayer/win 3 rounds"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.922335, 0.9223345, 0, 1)
+theme_override_fonts/font = ExtResource("3_hii65")
+theme_override_font_sizes/font_size = 150
+text = "     🏆
+player 1 
+    win"
+
 [node name="sounds" type="Node2D" parent="."]
 
 [node name="ButtonPress382713" type="AudioStreamPlayer2D" parent="sounds"]
@@ -1791,6 +2085,14 @@ stream = ExtResource("30_hyiqk")
 
 [node name="GameStart317318" type="AudioStreamPlayer2D" parent="sounds"]
 stream = ExtResource("31_klft3")
+
+[node name="SlowCinematicClockTicking357979NXuLCgoO" type="AudioStreamPlayer2D" parent="sounds"]
+position = Vector2(578, 308)
+stream = ExtResource("31_x1jkm")
+
+[node name="WinnerGameSound404167" type="AudioStreamPlayer2D" parent="sounds"]
+position = Vector2(139, 84)
+stream = ExtResource("32_x1jkm")
 
 [connection signal="exit" from="CanvasLayer/sittings" to="." method="_on_sittings_exit"]
 [connection signal="pressed" from="CanvasLayer/play_menu/maps/map_1/HBoxContainer/VBoxContainer2/VBoxContainer2/NinePatchRect/VBoxContainer/MarginContainer2/TextureButton" to="." method="_on_texture_button_pressed_play_map_1"]

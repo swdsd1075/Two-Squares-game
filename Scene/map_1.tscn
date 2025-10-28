@@ -851,10 +851,8 @@ stream = ExtResource("13_ebuwn")
 volume_db = 6.0
 
 [node name="UI" parent="." instance=ExtResource("11_xemjw")]
-visible = false
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0.11366532, 0.11366526, 0.113665275, 1)
 
 [node name="TextLogo" type="Sprite2D" parent="."]

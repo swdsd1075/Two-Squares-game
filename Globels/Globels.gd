@@ -2,11 +2,12 @@ extends Node
 
 
 #this is for player_1 or 2 propties
-var lights : bool = false
-var partcals : bool = false
+var lights : bool = true
+var partcals : bool = true
 var time : int = 0
 var difficlalty : String = "Normal"
-
+var player_1_wins : int = 0
+var player_2_wins : int = 0
 var spown_player_not_one_point : Array
 var player_speed_propties : Array = [0,0]
 var player_damage_propties : Array = [0,0]

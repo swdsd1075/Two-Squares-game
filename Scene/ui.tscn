@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://bl7f2y2oksxb0"]
+[gd_scene load_steps=38 format=3 uid="uid://bl7f2y2oksxb0"]
 
 [ext_resource type="Script" uid="uid://bwgk5vmh6jrfi" path="res://Scripts/ui.gd" id="1_3i1b0"]
 [ext_resource type="Texture2D" uid="uid://m8802j0y47nd" path="res://gra/kenney_assets/heart.png" id="2_bpjw8"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://c3xbdaf1l2wjf" path="res://gra/game Player anim/Player_1/player_1_image.png" id="11_p1i6o"]
 [ext_resource type="Texture2D" uid="uid://bvtkakprfr206" path="res://gra/game Player anim/Player_2/player_2_image.png" id="12_vacr6"]
 [ext_resource type="Texture2D" uid="uid://cqveawkvcakqi" path="res://gra/UI/نفس اللوح الخشبي بأس-Photoroom.png" id="13_l3tci"]
+[ext_resource type="Texture2D" uid="uid://dqfum216ve2jc" path="res://gra/UI/resturt_button_pressed.png" id="14_hnrck"]
 [ext_resource type="Texture2D" uid="uid://cta8dg6rkohkh" path="res://gra/UI/quit button.png" id="14_rd0yu"]
 [ext_resource type="Texture2D" uid="uid://dh0cnprs4ylvs" path="res://gra/UI/quit_button_pressed.png" id="15_wsdcc"]
 [ext_resource type="Texture2D" uid="uid://blhlefs383n8a" path="res://gra/UI/start_button.png" id="16_466ek"]
@@ -33,50 +34,14 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect2:color")
+tracks/0/path = NodePath("esc_menu:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0, 0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("ColorRect2:z_index")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1000]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("sounds/WoodFriction149666LeblnxmaZ6zV1sSh:playing")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("sounds/WinnerGameSound404167:playing")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_l3tci"]
@@ -128,6 +93,30 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("esc_menu:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.03333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("esc_menu:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.07320607, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_7lmrb"]
@@ -410,6 +399,18 @@ tracks/13/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("win_player/MarginContainer2:modulate")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(7.421512, 8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_d0mn4"]
 _data = {
@@ -579,7 +580,7 @@ offset_top = -1653.0
 offset_right = 3540.0
 offset_bottom = 2466.0
 mouse_filter = 2
-color = Color(1, 1, 1, 0)
+color = Color(0, 0.760784, 0.372549, 0.48235297)
 
 [node name="ColorRect2" type="ColorRect" parent="."]
 z_index = 1000
@@ -631,7 +632,6 @@ size_flags_vertical = 0
 theme_override_constants/separation = -23
 
 [node name="TextureRect" type="TextureRect" parent="win_player/HBoxContainer/VBoxContainer"]
-modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(400, 90)
 layout_mode = 2
 texture = ExtResource("9_bft37")
@@ -645,7 +645,7 @@ size_flags_vertical = 0
 theme_override_constants/separation = -2
 
 [node name="NinePatchRect" type="NinePatchRect" parent="win_player/HBoxContainer/VBoxContainer/VBoxContainer2"]
-custom_minimum_size = Vector2(345, 0)
+custom_minimum_size = Vector2(345, 480)
 layout_mode = 2
 texture = ExtResource("10_d0mn4")
 patch_margin_left = 2
@@ -654,7 +654,6 @@ patch_margin_right = 2
 patch_margin_bottom = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="win_player/HBoxContainer/VBoxContainer/VBoxContainer2/NinePatchRect"]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -729,6 +728,7 @@ theme_override_font_sizes/font_size = 70
 text = "1367"
 
 [node name="hit damage" type="HBoxContainer" parent="win_player/HBoxContainer/VBoxContainer/VBoxContainer2/NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 
 [node name="Label" type="Label" parent="win_player/HBoxContainer/VBoxContainer/VBoxContainer2/NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer/hit damage"]
@@ -739,6 +739,23 @@ theme_override_font_sizes/font_size = 70
 text = "hit dmg"
 
 [node name="Label2" type="Label" parent="win_player/HBoxContainer/VBoxContainer/VBoxContainer2/NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer/hit damage"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_lfpiq")
+theme_override_font_sizes/font_size = 70
+text = "1367"
+
+[node name="win" type="HBoxContainer" parent="win_player/HBoxContainer/VBoxContainer/VBoxContainer2/NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="win_player/HBoxContainer/VBoxContainer/VBoxContainer2/NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer/win"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.7575928, 0.17978969, 1)
+theme_override_fonts/font = ExtResource("2_lfpiq")
+theme_override_font_sizes/font_size = 70
+text = "wins"
+
+[node name="Label2" type="Label" parent="win_player/HBoxContainer/VBoxContainer/VBoxContainer2/NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer/win"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_lfpiq")
@@ -769,7 +786,6 @@ size_flags_vertical = 0
 theme_override_constants/separation = -23
 
 [node name="TextureRect" type="TextureRect" parent="win_player/HBoxContainer/VBoxContainer2"]
-modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(400, 90)
 layout_mode = 2
 texture = ExtResource("9_bft37")
@@ -783,7 +799,7 @@ size_flags_vertical = 0
 theme_override_constants/separation = -2
 
 [node name="NinePatchRect" type="NinePatchRect" parent="win_player/HBoxContainer/VBoxContainer2/VBoxContainer2"]
-custom_minimum_size = Vector2(345, 0)
+custom_minimum_size = Vector2(345, 480)
 layout_mode = 2
 texture = ExtResource("10_d0mn4")
 patch_margin_left = 2
@@ -792,7 +808,6 @@ patch_margin_right = 2
 patch_margin_bottom = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="win_player/HBoxContainer/VBoxContainer2/VBoxContainer2/NinePatchRect"]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -867,6 +882,7 @@ theme_override_font_sizes/font_size = 70
 text = "1367"
 
 [node name="hit damage" type="HBoxContainer" parent="win_player/HBoxContainer/VBoxContainer2/VBoxContainer2/NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 
 [node name="Label" type="Label" parent="win_player/HBoxContainer/VBoxContainer2/VBoxContainer2/NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer/hit damage"]
@@ -877,6 +893,23 @@ theme_override_font_sizes/font_size = 70
 text = "hit dmg"
 
 [node name="Label2" type="Label" parent="win_player/HBoxContainer/VBoxContainer2/VBoxContainer2/NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer/hit damage"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_lfpiq")
+theme_override_font_sizes/font_size = 70
+text = "1367"
+
+[node name="win" type="HBoxContainer" parent="win_player/HBoxContainer/VBoxContainer2/VBoxContainer2/NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="win_player/HBoxContainer/VBoxContainer2/VBoxContainer2/NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer/win"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.7575928, 0.17978969, 1)
+theme_override_fonts/font = ExtResource("2_lfpiq")
+theme_override_font_sizes/font_size = 70
+text = "wins"
+
+[node name="Label2" type="Label" parent="win_player/HBoxContainer/VBoxContainer2/VBoxContainer2/NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer/win"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_lfpiq")
@@ -916,6 +949,21 @@ theme_override_fonts/font = ExtResource("2_lfpiq")
 theme_override_font_sizes/font_size = 70
 text = "click (k) to skip"
 
+[node name="MarginContainer2" type="MarginContainer" parent="win_player"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="resturt" type="TextureButton" parent="win_player/MarginContainer2"]
+custom_minimum_size = Vector2(250, 80)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+texture_normal = ExtResource("17_3flpx")
+texture_pressed = ExtResource("14_hnrck")
+ignore_texture_size = true
+stretch_mode = 0
+
 [node name="start_effect" type="MarginContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
@@ -945,7 +993,7 @@ theme_override_font_sizes/font_size = 199
 text = "loading..."
 
 [node name="esc_menu" type="Control" parent="."]
-modulate = Color(1, 1, 1, 0.9166667)
+visible = false
 z_index = 8
 layout_mode = 3
 anchors_preset = 15
@@ -1128,6 +1176,7 @@ volume_db = -1.0
 
 [connection signal="timeout" from="effect_timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="effect_time_timer" to="." method="_on_effect_time_timer_timeout"]
+[connection signal="pressed" from="win_player/MarginContainer2/resturt" to="." method="_on_resturt_pressed"]
 [connection signal="pressed" from="esc_menu/quit_button/TextureButton" to="." method="_on_texture_button_pressed"]
 [connection signal="pressed" from="esc_menu/MarginContainer/TextureRect/MarginContainer/VBoxContainer/start/TextureButton" to="." method="_on_texture_start_button_pressed"]
 [connection signal="pressed" from="esc_menu/MarginContainer/TextureRect/MarginContainer/VBoxContainer/resturt/TextureButton" to="." method="_on_texture_resturt_button_pressed"]

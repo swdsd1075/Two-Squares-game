@@ -28,8 +28,10 @@ func button_hover_anmi(button: TextureButton, hover: bool = true) -> void:
 
 var button_states = {} # نخزن آخر حالة لكل زر
 var start_buttons : bool = false
+@export var max_win := 3
 
 func _ready() -> void:
+	#Globels.player_1_wins += 1
 	$AnimationPlayer.play("start_anmi")
 	#await $AnimationPlayer.animation_finished
 	start_buttons = true
@@ -43,7 +45,17 @@ func _ready() -> void:
 	var tween = create_tween()
 	tween.tween_property($CanvasLayer/black_color,"color",Color(1.0, 1.0, 1.0, 0.0),0.5)
 	await get_tree().create_timer(1).timeout
+	if Globels.player_2_wins == max_win:
+		$"CanvasLayer/win 3 rounds/HBoxContainer2".visible = true
+		$AnimationPlayer.play("win_anmi")
+	elif Globels.player_1_wins == max_win:
+		$"CanvasLayer/win 3 rounds/HBoxContainer".visible = true
+		$AnimationPlayer.play("win_anmi")
 var quit_screen : bool = false
+
+func reset():
+	Globels.player_1_wins = 0
+	Globels.player_2_wins = 0
 
 func _physics_process(delta: float) -> void:
 	if not start_anmi:
@@ -63,6 +75,10 @@ func _physics_process(delta: float) -> void:
 	$bg/players/PointLight2D2.visible = Globels.lights
 	$bg/players/PointLight2D3.visible = Globels.lights
 	$bg/heart/PointLight2D2.visible = Globels.lights
+	
+	#win
+	$"CanvasLayer/player win/VBoxContainer/HBoxContainer/Label".text = "wins:"+str(Globels.player_1_wins)+"/3"
+	$"CanvasLayer/player win/VBoxContainer/HBoxContainer2/Label".text = "wins:"+str(Globels.player_2_wins)+"/3"
 	
 	#esc
 	if sitting_on_off == false and Input.is_action_just_pressed("esc_menu"):
