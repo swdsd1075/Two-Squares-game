@@ -30,6 +30,9 @@ var button_states = {} # نخزن آخر حالة لكل زر
 var start_buttons : bool = false
 @export var max_win := 3
 
+var last_player_1_win := 0
+var last_player_2_win := 0
+
 func _ready() -> void:
 	#Globels.player_1_wins += 1
 	$AnimationPlayer.play("start_anmi")
@@ -45,17 +48,22 @@ func _ready() -> void:
 	var tween = create_tween()
 	tween.tween_property($CanvasLayer/black_color,"color",Color(1.0, 1.0, 1.0, 0.0),0.5)
 	await get_tree().create_timer(1).timeout
-	if Globels.player_2_wins == max_win:
+	
+	if Globels.player_2_wins == last_player_2_win+max_win:
 		$"CanvasLayer/win 3 rounds/HBoxContainer2".visible = true
 		$AnimationPlayer.play("win_anmi")
-	elif Globels.player_1_wins == max_win:
+		last_player_1_win = Globels.player_1_wins
+		last_player_2_win = Globels.player_2_wins
+	elif Globels.player_1_wins == last_player_1_win+max_win:
 		$"CanvasLayer/win 3 rounds/HBoxContainer".visible = true
 		$AnimationPlayer.play("win_anmi")
+		last_player_1_win = Globels.player_1_wins
+		last_player_2_win = Globels.player_2_wins
+	
 var quit_screen : bool = false
 
 func reset():
-	Globels.player_1_wins = 0
-	Globels.player_2_wins = 0
+	pass
 
 func _physics_process(delta: float) -> void:
 	if not start_anmi:
@@ -77,8 +85,8 @@ func _physics_process(delta: float) -> void:
 	$bg/heart/PointLight2D2.visible = Globels.lights
 	
 	#win
-	$"CanvasLayer/player win/VBoxContainer/HBoxContainer/Label".text = "wins:"+str(Globels.player_1_wins)+"/3"
-	$"CanvasLayer/player win/VBoxContainer/HBoxContainer2/Label".text = "wins:"+str(Globels.player_2_wins)+"/3"
+	$"CanvasLayer/player win/VBoxContainer/HBoxContainer/Label".text = "wins:"+str(Globels.player_1_wins)
+	$"CanvasLayer/player win/VBoxContainer/HBoxContainer2/Label".text = "wins:"+str(Globels.player_2_wins)
 	
 	#esc
 	if sitting_on_off == false and Input.is_action_just_pressed("esc_menu"):

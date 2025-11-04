@@ -1,6 +1,9 @@
 extends Node
 
 
+
+
+
 #this is for player_1 or 2 propties
 var lights : bool = true
 var partcals : bool = true

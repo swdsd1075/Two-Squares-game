@@ -31,18 +31,6 @@
 
 [sub_resource type="Animation" id="Animation_bft37"]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("esc_menu:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
 
 [sub_resource type="Animation" id="Animation_l3tci"]
 resource_name = "esc_menu_anmi"
@@ -257,7 +245,7 @@ tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(7.41, 11.9333),
+"times": PackedFloat32Array(7.41, 9.3),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [],
@@ -580,7 +568,7 @@ offset_top = -1653.0
 offset_right = 3540.0
 offset_bottom = 2466.0
 mouse_filter = 2
-color = Color(0, 0.760784, 0.372549, 0.48235297)
+color = Color(1, 1, 1, 0)
 
 [node name="ColorRect2" type="ColorRect" parent="."]
 z_index = 1000
@@ -632,6 +620,7 @@ size_flags_vertical = 0
 theme_override_constants/separation = -23
 
 [node name="TextureRect" type="TextureRect" parent="win_player/HBoxContainer/VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(400, 90)
 layout_mode = 2
 texture = ExtResource("9_bft37")
@@ -645,7 +634,7 @@ size_flags_vertical = 0
 theme_override_constants/separation = -2
 
 [node name="NinePatchRect" type="NinePatchRect" parent="win_player/HBoxContainer/VBoxContainer/VBoxContainer2"]
-custom_minimum_size = Vector2(345, 480)
+custom_minimum_size = Vector2(345, 0)
 layout_mode = 2
 texture = ExtResource("10_d0mn4")
 patch_margin_left = 2
@@ -654,6 +643,7 @@ patch_margin_right = 2
 patch_margin_bottom = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="win_player/HBoxContainer/VBoxContainer/VBoxContainer2/NinePatchRect"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -761,6 +751,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_lfpiq")
 theme_override_font_sizes/font_size = 70
 text = "1367"
+autowrap_trim_flags = 128
 
 [node name="score" type="HBoxContainer" parent="win_player/HBoxContainer/VBoxContainer/VBoxContainer2/NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -786,6 +777,7 @@ size_flags_vertical = 0
 theme_override_constants/separation = -23
 
 [node name="TextureRect" type="TextureRect" parent="win_player/HBoxContainer/VBoxContainer2"]
+modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(400, 90)
 layout_mode = 2
 texture = ExtResource("9_bft37")
@@ -799,7 +791,7 @@ size_flags_vertical = 0
 theme_override_constants/separation = -2
 
 [node name="NinePatchRect" type="NinePatchRect" parent="win_player/HBoxContainer/VBoxContainer2/VBoxContainer2"]
-custom_minimum_size = Vector2(345, 480)
+custom_minimum_size = Vector2(345, 0)
 layout_mode = 2
 texture = ExtResource("10_d0mn4")
 patch_margin_left = 2
@@ -808,6 +800,7 @@ patch_margin_right = 2
 patch_margin_bottom = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="win_player/HBoxContainer/VBoxContainer2/VBoxContainer2/NinePatchRect"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -950,6 +943,7 @@ theme_override_font_sizes/font_size = 70
 text = "click (k) to skip"
 
 [node name="MarginContainer2" type="MarginContainer" parent="win_player"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8

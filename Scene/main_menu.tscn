@@ -957,7 +957,7 @@ color = Color(0.988235, 0.407843, 0.231373, 1)
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/main_menu:position")
+tracks/0/path = NodePath("CanvasLayer/win 3 rounds:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -1133,7 +1133,7 @@ tracks/0/path = NodePath("CanvasLayer/black_color:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 9.666667),
+"times": PackedFloat32Array(0.13333334, 9.666667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -1315,8 +1315,8 @@ tracks/15/path = NodePath("CanvasLayer/win 3 rounds:position")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
-"times": PackedFloat32Array(0.0742789, 9.681017),
-"transitions": PackedFloat32Array(315.173, 2998.452),
+"times": PackedFloat32Array(0, 9.681017),
+"transitions": PackedFloat32Array(66.25694, 2998.452),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(1500, 0)]
 }
@@ -1469,6 +1469,7 @@ libraries = {
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="black_color" type="ColorRect" parent="CanvasLayer"]
+visible = false
 modulate = Color(1, 1, 1, 0)
 z_index = -9
 offset_right = 2081.0
@@ -1619,9 +1620,9 @@ metadata/_edit_lock_ = true
 [node name="button" type="MarginContainer" parent="CanvasLayer/main_menu"]
 z_index = 3
 layout_mode = 1
-offset_top = -300.0
+offset_top = 293.0
 offset_right = 1019.0
-offset_bottom = 2740.0
+offset_bottom = 3333.0
 scale = Vector2(5, 5)
 theme_override_constants/margin_left = -24
 theme_override_constants/margin_top = -89
@@ -1777,7 +1778,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="game logo" type="MarginContainer" parent="CanvasLayer/main_menu"]
-modulate = Color(1, 1, 1, 0)
 z_index = -3
 layout_mode = 1
 anchors_preset = 1
@@ -1795,7 +1795,6 @@ texture = ExtResource("24_baltx")
 expand_mode = 1
 
 [node name="ver_text" type="MarginContainer" parent="CanvasLayer/main_menu"]
-modulate = Color(1, 1, 1, 0)
 z_index = 3
 layout_mode = 1
 anchors_preset = 3
@@ -2016,17 +2015,18 @@ theme_override_font_sizes/font_size = 45
 text = "wins:0/3"
 
 [node name="win 3 rounds" type="MarginContainer" parent="CanvasLayer"]
+visible = false
+modulate = Color(1, 1, 1, 0)
 z_index = 100
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1500.0
-offset_right = 1500.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/win 3 rounds"]
 visible = false
+modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -2046,6 +2046,7 @@ text = "wins:2/3"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/win 3 rounds"]
 visible = false
+modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4

@@ -186,8 +186,8 @@ func _process(_delta: float) -> void:
 	$win_player/HBoxContainer/VBoxContainer2/VBoxContainer2/NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer/score/Label2.text = str(round(Globels.player_score[1]))
 	$win_skip_timer.wait_time = 0.5
 	#win
-	$win_player/HBoxContainer/VBoxContainer2/VBoxContainer2/NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer/win/Label2.text = str(Globels.player_2_wins)
-	$win_player/HBoxContainer/VBoxContainer/VBoxContainer2/NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer/win/Label2.text = str(Globels.player_1_wins)
+	$win_player/HBoxContainer/VBoxContainer2/VBoxContainer2/NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer/win/Label2.text = str(Globels.player_1_wins) 
+	$win_player/HBoxContainer/VBoxContainer/VBoxContainer2/NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer/win/Label2.text = str(Globels.player_2_wins)
 	#time visble
 	if Globels.time >= 1:
 		$end_timer.visible = true
